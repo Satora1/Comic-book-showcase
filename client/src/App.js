@@ -9,21 +9,22 @@ function App() {
   useEffect(() => {
     if (heroes === "") {
       const getHeroes = async () => {
-        const response = await fetch('https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&limit=100');
+        const response = await fetch('http://localhost:5000/heroes')
         const data = await response.json();
-        setHeroes(data.data.results)
+        setHeroes(data)
       }
       getHeroes()
     }
     if (comics === "") {
       const getComics = async () => {
-        const response = await fetch('https://gateway.marvel.com/v1/public/comics?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&limit=100');
+        const response = await fetch('http://localhost:5000/comics');
         const data = await response.json();
-        setComics(data.data.results)
+        setComics(data)
       }
       getComics()
     }
   })
+  console.log(comics, heroes)
 
   return (
     <div className="App">
