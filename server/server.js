@@ -4,8 +4,13 @@ const cors = require('cors');
 const app = express();
 app.use(cors())
 app.use(express.json());
+const bodyParser=require('body-parser')
+const LOGS=require("./accountApi")
 
-mongoose.connect("mongodb+srv://marvel:CaptainAmerica12!@cluster1.tuu5x5u.mongodb.net/test")
+
+app.use(bodyParser.json())
+app.use(LOGS)
+mongoose.connect("mongodb+srv://satora:gapa1525@cluster0.m1tgxtj.mongodb.net/test")
   .then(() => {
     app.listen(5000, () => console.log('Server set http://localhost:5000'));
   })

@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import Hero_searchbar from './components/Hero_searchbar'
-
+import LOGS from './components/SinginActions';
 
 function App() {
   const [heroes, setHeroes] = useState("")
@@ -39,6 +39,7 @@ function App() {
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
       <Hero_searchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
+   <LOGS/>
     </div>
   );
 }
