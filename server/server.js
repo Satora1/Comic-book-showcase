@@ -5,7 +5,7 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://Marvel:kFIeUvSp0ZrKEUgZ@marvel.4akmwcm.mongodb.net/test")
+mongoose.connect("mongodb+srv://marvel:CaptainAmerica12!@cluster1.tuu5x5u.mongodb.net/test")
   .then(() => {
     app.listen(5000, () => console.log('Server set http://localhost:5000'));
   })
