@@ -1,6 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import HeroSearchbar from './components/HeroSearchbar'
+import ComicsSearchbar from './components/ComicsSearchbar'
+
 
 
 function App() {
@@ -8,11 +10,16 @@ function App() {
   const [comics, setComics] = useState("")
   const [heroSearch, setHeroSearch] = useState("")
   const [showHeroesRec, setShowHeroesRec] = useState(false)
+  const [comicsSearch, setComicsSearch] = useState("")
+  const [showComicsRec, setShowComicsRec] = useState(false)
 
   function handleGlobalClick(e) {
     console.log(e.target)
     if (e.target.className !== "hero_search") {
       setShowHeroesRec(false)
+    }
+    if (e.target.className !== "comics_search") {
+      setShowComicsRec(false)
     }
   }
 
@@ -34,6 +41,7 @@ function App() {
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
       <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
+      <ComicsSearchbar setComicsSearch={setComicsSearch} comicsSearch={comicsSearch} comics={comics} setShowComicsRec={setShowComicsRec} showComicsRec={showComicsRec} />
     </div>
   );
 }
