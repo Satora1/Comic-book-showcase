@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react'
-import Hero_searchbar from './components/Hero_searchbar'
+import HeroSearchbar from './components/HeroSearchbar'
 
 
 function App() {
@@ -17,28 +17,23 @@ function App() {
   }
 
   useEffect(() => {
-    if (heroes === "") {
-      const getHeroes = async () => {
-        const response = await fetch('http://localhost:5000/heroes')
-        const data = await response.json();
-        setHeroes(data)
-      }
-      getHeroes()
+    const getHeroes = async () => {
+      const response = await fetch('http://localhost:5000/heroes')
+      const data = await response.json();
+      setHeroes(data)
     }
-    if (comics === "") {
-      const getComics = async () => {
-        const response = await fetch('http://localhost:5000/comics');
-        const data = await response.json();
-        setComics(data)
-      }
-      getComics()
+    const getComics = async () => {
+      const response = await fetch('http://localhost:5000/comics');
+      const data = await response.json();
+      setComics(data)
     }
-  })
-  console.log(comics, heroes)
+    getComics()
+    getHeroes()
+  }, [])
 
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <Hero_searchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
+      <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
     </div>
   );
 }
