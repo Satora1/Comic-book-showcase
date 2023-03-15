@@ -19,7 +19,7 @@ function App() {
     }
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (heroes === "") {
       const getHeroes = async () => {
         const response = await fetch('http://localhost:5000/heroes')
@@ -36,7 +36,7 @@ function App() {
       }
       getComics()
     }
-  })
+  }) */
   
 
   return (

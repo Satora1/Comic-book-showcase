@@ -27,19 +27,26 @@ class ActionsLog {
   async getYourAccount(req, res) {
     try {
       const user = await LOGIN.findOne({ nick: req.body.nick })
+      console.log("user")
       if (!user) {
-        res.status(404).json({ error: "user not found" })
+       
+      
+       return  res.status(404).json({ error: "user not found" })
       }
       if (user.password === req.body.password) {
-        res.status(200).json(user)
+        
+      return  res.status(200).json(user)
+       
       }
       else {
-        res.status(403).json({ error: "forbiden" })
+       
+        return res.status(403).json({ error: "forbiden" })
+       
       }
 
     } catch {
-      res.send("wrong details")
-    }
+      console.log(error)
+    } 
   }
 }
 
