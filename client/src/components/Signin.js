@@ -8,6 +8,8 @@ const Signin = (props) => {
     const [surname, setsurname] = useState("");
     const [email, setemail] = useState("");
     const [nick, setnick] = useState("")
+    const [password, setpassword] = useState("")
+    const [buttonDisabled, setButtonDisabled] = useState(true);
 
     const ChangeNameHandler = event => {
         const value = event.target.value;
@@ -26,40 +28,72 @@ const Signin = (props) => {
         setnick(value)
     }
 
-    const addAccount = () => {
+    const ChangePasswordHandler = event => {
+        const value = event.target.value;
+        setpassword(value)
+    }
+
+    const addAccount = (event) => {
+
+
         const account = {
             name: name,
             surname: surname,
             email: email,
-            nick: nick
+            nick: nick,
+            password: password
         }
         props.onAdd(account)
         setname("")
         setsurname('')
         setemail("")
         setnick("")
+        setpassword("")
         setShowForm(false)
     }
+
+    const Confirm = (event) => {
+        event.preventDefault();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+            alert("Please enter a valid email address")
+
+        else setButtonDisabled(false)
+    }
+
 
 
     return (
         showForm ? (
             <div className="account-sheet">
-                <label className="name">Name:</label>
-                <input type="text" value={name} onChange={ChangeNameHandler} />
-                <br />
-                <label className="surname">Surame:</label>
-                <input type="text" value={surname} onChange={ChangeSurnameHandler} />
-                <br />
-                <label className="email">Email:</label>
-                <input type="email" value={email} onChange={ChangeEmailHandler} />
-                <br />
-                <label className="nick">Nick:</label>
-                <input type="nick" value={nick} onChange={ChangeNickHandler} />
-                <br />
-                <button className="Singin" onClick={() => addAccount()}>
-                    Signin
-                </button>
+
+                <form>
+
+                    <label className="name">Name:</label>
+                    <input type="text" value={name} onChange={ChangeNameHandler} required />
+                    <br />
+
+                    <label className="surname">Surame:</label>
+                    <input type="text" value={surname} onChange={ChangeSurnameHandler} required />
+                    <br />
+
+                    <label className="email" htmlFor="email">Email:</label>
+                    <input type="email" value={email} onChange={ChangeEmailHandler} required />
+                    <br />
+
+                    <label className="password" >Password:</label>
+                    <input type="text" value={password} onChange={ChangePasswordHandler} required />
+                    <br />
+
+                    <label className="nick">Nick:</label>
+                    <input type="nick" value={nick} onChange={ChangeNickHandler} />
+                    <br />
+
+                    <button className="Singin" disabled={buttonDisabled} onClick={addAccount} >
+                        Signin
+                    </button>
+                    <button className="confirm" onClick={Confirm}>Confirm</button>
+
+                </form>
             </div>) : (
             <button className="new-account" onClick={() => setShowForm(true)}>create account</button>
         )

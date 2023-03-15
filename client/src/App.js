@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import Hero_searchbar from './components/Hero_searchbar'
 import LOGS from './components/SinginActions';
 
+
+
+
 function App() {
   const [heroes, setHeroes] = useState("")
   const [comics, setComics] = useState("")
@@ -10,7 +13,7 @@ function App() {
   const [showHeroesRec, setShowHeroesRec] = useState(false)
 
   function handleGlobalClick(e) {
-    console.log(e.target)
+   
     if (e.target.className !== "hero_search") {
       setShowHeroesRec(false)
     }
@@ -34,7 +37,7 @@ function App() {
       getComics()
     }
   })
-  console.log(comics, heroes)
+  
 
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
