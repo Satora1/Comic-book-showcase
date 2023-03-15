@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
 
 const LOGIN = mongoose.model("ActionsLog", schema);
 
-class ActionsLog {
+class LogActions {
   async saveAccount(req, res) {
     const { name, surname, email, nick, password } = req.body;
     const log = new LOGIN({ name, surname, email, nick, password });
@@ -50,4 +50,4 @@ class ActionsLog {
   }
 }
 
-module.exports = new ActionsLog();
+module.exports = new LogActions();

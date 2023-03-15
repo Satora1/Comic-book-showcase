@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react'
 import HeroSearchbar from './components/HeroSearchbar'
 import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
-
-import Hero_searchbar from './components/Hero_searchbar'
 import LOGS from './components/SinginActions';
+import Login from './components/Login';
 
 function App() {
   const [heroes, setHeroes] = useState("")
@@ -15,10 +14,11 @@ function App() {
   const [comicsSearch, setComicsSearch] = useState("")
   const [showComicsRec, setShowComicsRec] = useState(false)
   const [display, setDisplay] = useState("home")
+  const [showLoginForm, setShowLoginForm] = useState(false);
 
 
   function handleGlobalClick(e) {
-   
+
     if (e.target.className !== "hero_search") {
       setShowHeroesRec(false)
     }
@@ -47,13 +47,16 @@ function App() {
 
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <div onClick={(e) => setDisplay("comics")}>comics</div>
-      <div onClick={(e) => setDisplay("home")}>HOME</div>
+      <div className="buttons">
+        <div onClick={(e) => setDisplay("comics")}>COMICS</div>
+        <div onClick={(e) => setDisplay("home")}>HOME</div>
+        <div onClick={() => setShowLoginForm(true)}>LOGIN</div>
+      </div>
       {display === "comics" && <AvailableComics comics={comics} />}
       {/* {display === "home"} */}
       <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
       <ComicsSearchbar setComicsSearch={setComicsSearch} comicsSearch={comicsSearch} comics={comics} setShowComicsRec={setShowComicsRec} showComicsRec={showComicsRec} />
-
+      {showLoginForm && <Login showLoginForm = {showLoginForm} setShowLoginForm = {setShowLoginForm} />}
     </div>
   );
 }
