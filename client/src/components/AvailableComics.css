@@ -52,6 +52,10 @@
     font-weight: bold;
 }
 
+.comic-desc {
+    text-align: justify;
+}
+
 .close-comic-button {
     float: right;
 }
