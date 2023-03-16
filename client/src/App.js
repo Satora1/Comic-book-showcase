@@ -63,13 +63,18 @@ function App() {
   }
 
   return (
-
+<div>
+  <div className='background-img'>
+    <div class='toolbar'>
     <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <div className="Nav">
+      <div className="buttons">
         <div onClick={(e) => setDisplay("comics")}>COMICS</div>
         <div onClick={(e) => setDisplay("home")}>HOME</div>
+       </div>
+        <div className='LogIn'>
         {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
-          <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+        
+         <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
         {loggedIn && <div onClick={(e) => setDisplay("profile")}>PROFILE</div>}
         {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
       </div>
@@ -102,6 +107,9 @@ function App() {
           setLoggedIn={setLoggedIn} />}
 
     </div>
+    </div>
+    </div>
+     </div>
   );
 }
 
