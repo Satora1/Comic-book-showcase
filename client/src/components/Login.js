@@ -5,6 +5,7 @@ const Login = (props) => {
     const [nick, setNick] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [buttonDisabled, setButtonDisabled] = useState(true);
 
 
     const LogToAccount = async (event) => {
@@ -25,7 +26,8 @@ const Login = (props) => {
             } else if (response.status === 403) {
                 console.log("Access denied!");
             } else if (response.status === 404) {
-                console.log("Resource not found!");
+                 console.log("Resource not found!");
+                
             } else {
                 console.log("An error occurred!");
             }
@@ -66,6 +68,15 @@ const Login = (props) => {
         }
     }
 
+    const Confirm = (event) => {
+        event.preventDefault();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+            alert("Please enter a valid email address")
+
+        else setButtonDisabled(false)
+    }
+
+
     return (<div>
         {props.showLoginForm &&
             <div className="account-sheet">
@@ -97,9 +108,11 @@ const Login = (props) => {
                     <label className="password_label">Password:</label>
                     <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
                     <br />
-                    <button className="registration_button" onClick={createAccount}>
+                    <button className="registration_button" disabled={buttonDisabled} onClick={createAccount}>
                         Create an account
                     </button>
+                    <button className="confirm" onClick={Confirm}>Confirm</button>
+
                 </form>
             </div>}</div>)
 };
