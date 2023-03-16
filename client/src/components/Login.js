@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Premium from "./premium";
 
 const Login = (props) => {
     const [nick, setNick] = useState("");

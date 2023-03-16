@@ -49,6 +49,14 @@ class LogActions {
           console.error(error);
         });
     }
+
+    async Premium(req,res){
+ console.log("ok")
+  await res.send("premium")
 }
+
+}
+
+
 
 module.exports = new LogActions();

@@ -5,7 +5,7 @@ import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
 import ProfilePanel from './components/ProfilePanel'
 import Login from './components/Login';
-import Modal from "react-modal";
+
 
 
 function App() {

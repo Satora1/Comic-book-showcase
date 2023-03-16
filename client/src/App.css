@@ -179,8 +179,13 @@ body {
 }
 
 .profile_panel {
-  position: absolute;
-  top: 50vh;
+  position: fixed;
+  top: 30vh;
   left: 45vw;
-  width: 10vw
+  width: 100vh;
+  margin-top: -50px;
+  margin-left: -100px;
+  height: 100vh;
+  overflow: auto;
 }
+
