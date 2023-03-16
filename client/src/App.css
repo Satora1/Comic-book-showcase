@@ -12,12 +12,31 @@
 
 .hero_search_container,
 .comics_search_container {
+  background-color: white;
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;
   display: flex;
+  position: absolute;
+  width: 22vw;
+  top: 50vh;
+  left: 39vw;
   flex-direction: column;
   align-items: center;
 }
+.hero_search {
+  width: 21vw;
+}
 
+.recommendations {
+  width: 21.9vw;
+}
 
+.heroName {
+  opacity: 0.5;
+}
+.heroName:hover {
+  opacity: 1;
+}
 
 .background-img {
   position: relative;
