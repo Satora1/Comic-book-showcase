@@ -12,10 +12,17 @@ const LOGIN = mongoose.model("ActionsLog", schema);
 
 class LogActions {
   async register(req, res) {
+    console.log(req.body)
     const { email, nick, password } = req.body;
-    const log = new LOGIN({ email, nick, password });
-    await log.save();
-    res.json(log);
+    const sameNick = await LOGIN.findOne({ nick: req.body.nick })
+    const sameEmail = await LOGIN.findOne({ nick: req.body.email })
+    if (sameNick) { res.json("Nickname already in use") }
+    if (sameEmail) { res.json("Email already in use") }
+    if(!sameNick && !sameEmail){
+      const log = new LOGIN({ email, nick, password });
+      await log.save();
+      res.json("user created");
+    }
   }
 
   async login(req, res) {
