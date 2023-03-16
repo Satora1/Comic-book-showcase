@@ -18,6 +18,7 @@
 }
 
 
+
 .background-img {
   position: relative;
   height: 60vh;
@@ -88,3 +89,9 @@ margin-inline: 150px;
   top: 0px;
   right: 0px;
 }
+
+.comic-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+

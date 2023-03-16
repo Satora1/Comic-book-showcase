@@ -5,6 +5,8 @@ import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
 import LOGS from './components/SinginActions';
 import Login from './components/Login';
+import Modal from "react-modal";
+
 
 function App() {
   const [heroes, setHeroes] = useState("")
@@ -47,25 +49,19 @@ function App() {
     getHeroes()
   }, [])
 
+  // Modal.setAppElement('.App');
+
   return (
- <div>
-  <div className='background-img'>
-    <div class='toolbar'>
-      <div onClick={(e) => handleGlobalClick(e)} className="App">
-        <div className="buttons">
-          
-          <div onClick={(e) => setDisplay("comics")}>COMICS</div>
-          <div onClick={(e) => setDisplay("home")}>HOME</div></div>
-          <div className='LogIn'>
-          {(!showLoginForm && !showRegistrationForm) && <div onClick={() => setShowLoginForm(true)}>LOGIN</div>}
-        </div>
-        {display === "comics" && <AvailableComics comics={comics} />}
-        {/* {display === "home"} */}
-        <HeroSearchbar setHeroSearch={setHeroSearch}
-          heroSearch={heroSearch}
-          heroes={heroes}
-          setShowHeroesRec={setShowHeroesRec}
-          showHeroesRec={showHeroesRec} />
+
+    <div onClick={(e) => handleGlobalClick(e)} className="App">
+      <div className="Nav">
+        <div onClick={(e) => setDisplay("comics")}>COMICS</div>
+        <div onClick={(e) => setDisplay("home")}>HOME</div>
+        {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
+          <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+        {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
+      </div>
+      {display === "comics" && <div>
 
         <ComicsSearchbar setComicsSearch={setComicsSearch}
           comicsSearch={comicsSearch}
@@ -73,15 +69,22 @@ function App() {
           setShowComicsRec={setShowComicsRec}
           showComicsRec={showComicsRec} />
 
-        {(showLoginForm || showRegistrationForm) &&
-          <Login showLoginForm={showLoginForm}
-            setShowLoginForm={setShowLoginForm}
-            setShowRegistrationForm={setShowRegistrationForm}
-            showRegistrationForm={showRegistrationForm}
-            loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn} />}
-      </div>
-    </div>
+        <div className="comic-list">
+          <AvailableComics comics={comics} /></div></div>}
+      {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
+        heroSearch={heroSearch}
+        heroes={heroes}
+        setShowHeroesRec={setShowHeroesRec}
+        showHeroesRec={showHeroesRec} />}
+
+      {(showLoginForm || showRegistrationForm) &&
+        <Login showLoginForm={showLoginForm}
+          setShowLoginForm={setShowLoginForm}
+          setShowRegistrationForm={setShowRegistrationForm}
+          showRegistrationForm={showRegistrationForm}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn} />}
+
     </div>
      </div>
   );
