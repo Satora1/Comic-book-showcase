@@ -1,0 +1,26 @@
+/* .comic-list-card {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: #ce8888;
+} */
+
+.comic-list-card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 12vw;
+    /* height: 40vh; */
+    margin: 10px;
+    /* min-width: 250px;
+    min-height: 225px; */
+}
+
+.comic-list-image {
+    width: 12vw;
+    /* max-height: 190px; */
+}
+
+.comic-list-title {
+    width: 12vw;
+}
+

@@ -52,7 +52,9 @@ function App() {
         <div onClick={(e) => setDisplay("home")}>HOME</div>
         <div onClick={() => setShowLoginForm(true)}>LOGIN</div>
       </div>
-      {display === "comics" && <AvailableComics comics={comics} />}
+      <div className="comic-list">
+        {display === "comics" && <AvailableComics comics={comics} />}
+      </div>
       {/* {display === "home"} */}
       <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
       <ComicsSearchbar setComicsSearch={setComicsSearch} comicsSearch={comicsSearch} comics={comics} setShowComicsRec={setShowComicsRec} showComicsRec={showComicsRec} />

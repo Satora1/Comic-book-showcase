@@ -1,9 +1,16 @@
+import "./AvailableComics.css"
+
+
 function AvailableComics(props){
     console.log(props.comics)
-    return (<div>
+    return (
+        <>
         {[...props.comics].map(el=> (
-        <div>{el.title}</div>
+        <div key={el.id} className="comic-list-card">
+            <img className="comic-list-image" src={el.thumbnail.path + ".jpg"} alt="comic front page" />
+            <div className="comic-list-title">{el.title}</div>
+        </div>
         ))}
-    </div>)
+   </> )
 }
 export default AvailableComics
