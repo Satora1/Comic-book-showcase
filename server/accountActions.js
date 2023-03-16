@@ -18,7 +18,7 @@ class LogActions {
     const sameEmail = await LOGIN.findOne({ nick: req.body.email })
     if (sameNick) { res.json("Nickname already in use") }
     if (sameEmail) { res.json("Email already in use") }
-    if(!sameNick && !sameEmail){
+    if (!sameNick && !sameEmail) {
       const log = new LOGIN({ email, nick, password });
       await log.save();
       res.json("user created");
@@ -28,7 +28,6 @@ class LogActions {
   async login(req, res) {
     try {
       const user = await LOGIN.findOne({ nick: req.body.nick, password: req.body.password })
-      console.log(user)
       if (!user) {
         res.json("user not found")
       }
@@ -39,6 +38,17 @@ class LogActions {
       console.error()
     }
   }
+
+  async deleteAccount(req, res) {
+    console.log(req.body)
+      await LOGIN.deleteOne({ nick: req.body.nick })
+        .then(account => {
+          res.json(account);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
 }
 
 module.exports = new LogActions();

@@ -8,6 +8,6 @@
     "nodemon": "^2.0.21"
   },
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon server.js"
   }
 }

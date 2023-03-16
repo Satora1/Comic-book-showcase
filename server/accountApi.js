@@ -3,9 +3,9 @@ const LOGS = exprees.Router()
 const LogActions = require("./accountActions")
 
 
-LOGS.post("/login", LogActions.login)//get to your 
-//LOGS.get("/log",LogActions.getAllAccounts)//see all
-LOGS.post("/register", LogActions.register)//save
+LOGS.post("/login", LogActions.login)
+LOGS.delete("/login", LogActions.deleteAccount)
+LOGS.post("/register", LogActions.register)
 
 
 

@@ -15,7 +15,6 @@ const Login = (props) => {
                 nick,
                 password,
             });
-            console.log(response.data)
             if (response.data[0] === "user found") {
                 console.log("Login successful!");
                 setNick("");
@@ -23,7 +22,7 @@ const Login = (props) => {
                 setEmail("")
                 setErrorMessage("")
                 props.setShowLoginForm(false);
-                props.setLoggedIn([true, response.data.nick])
+                props.setLoggedIn([true, response.data[1]])
             } else if (response.data == "user not found") {
                 setErrorMessage("Incorrect nick or password")
             } else {
@@ -33,6 +32,7 @@ const Login = (props) => {
             console.log(error);
         }
     };
+
     const OpenRegistrationForm = async (event) => {
         setNick("");
         setPassword("");

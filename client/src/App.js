@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import HeroSearchbar from './components/HeroSearchbar'
 import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
-import LOGS from './components/SinginActions';
+import ProfilePanel from './components/ProfilePanel'
 import Login from './components/Login';
 
 function App() {
@@ -47,6 +47,19 @@ function App() {
     getHeroes()
   }, [])
 
+  async function deleteAccount(nick) {
+    await fetch('http://localhost:5000/api/login', {
+      method: "delete",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nick })
+    })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error())
+    setLoggedIn(false)
+    setDisplay("home")
+  }
+
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
       <div className="Nav">
@@ -54,8 +67,12 @@ function App() {
         <div onClick={(e) => setDisplay("home")}>HOME</div>
         {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
           <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+        {loggedIn && <div onClick={(e) => setDisplay("profile")}>PROFILE</div>}
         {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
       </div>
+      {display === "profile" && <ProfilePanel loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        deleteAccount={deleteAccount} />}
       {display === "comics" && <div>
         <ComicsSearchbar setComicsSearch={setComicsSearch}
           comicsSearch={comicsSearch}
