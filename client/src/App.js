@@ -62,7 +62,8 @@ function App() {
           comics={comics}
           setShowComicsRec={setShowComicsRec}
           showComicsRec={showComicsRec} />
-        <AvailableComics comics={comics} /></div>}
+        <div className="comic-list">
+          <AvailableComics comics={comics} /></div></div>}
       {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
         heroSearch={heroSearch}
         heroes={heroes}
