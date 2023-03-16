@@ -17,8 +17,8 @@ class LogActions {
     const sameNick = await LOGIN.findOne({ nick: req.body.nick })
     const sameEmail = await LOGIN.findOne({ nick: req.body.email })
     if (sameNick) { res.json("Nickname already in use") }
-    if (sameEmail) { res.json("Email already in use") }
-    if (!sameNick && !sameEmail) {
+    else if (sameEmail) { res.json("Email already in use") }
+    else {
       const log = new LOGIN({ email, nick, password });
       await log.save();
       res.json("user created");

@@ -22,6 +22,7 @@ body {
   top: 50vh;
   left: 39vw;
 }
+
 .comics_search_container {
   position: absolute;
   top: 3vh;
@@ -123,8 +124,6 @@ body {
 
 .buttons div {
   margin-right: 100px;
-
-
 }
 
 .LogIn {
@@ -142,7 +141,7 @@ body {
 .comic-list {
   display: flex;
   flex-wrap: wrap;
-  position:absolute;
+  position: absolute;
   z-index: 1;
   top: 10vh;
   height: 90vh;
@@ -177,4 +176,11 @@ body {
   position: fixed;
   margin-left: -12vh;
   overflow: auto;
+}
+
+.profile_panel {
+  position: absolute;
+  top: 50vh;
+  left: 45vw;
+  width: 10vw
 }
