@@ -48,35 +48,42 @@ function App() {
   }, [])
 
   return (
-    <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <div className="buttons">
-        <div onClick={(e) => setDisplay("comics")}>COMICS</div>
-        <div onClick={(e) => setDisplay("home")}>HOME</div>
-        {(!showLoginForm && !showRegistrationForm) && <div onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+ <div>
+  <div className='background-img'>
+    <div class='toolbar'>
+      <div onClick={(e) => handleGlobalClick(e)} className="App">
+        <div className="buttons">
+          
+          <div onClick={(e) => setDisplay("comics")}>COMICS</div>
+          <div onClick={(e) => setDisplay("home")}>HOME</div></div>
+          <div className='LogIn'>
+          {(!showLoginForm && !showRegistrationForm) && <div onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+        </div>
+        {display === "comics" && <AvailableComics comics={comics} />}
+        {/* {display === "home"} */}
+        <HeroSearchbar setHeroSearch={setHeroSearch}
+          heroSearch={heroSearch}
+          heroes={heroes}
+          setShowHeroesRec={setShowHeroesRec}
+          showHeroesRec={showHeroesRec} />
+
+        <ComicsSearchbar setComicsSearch={setComicsSearch}
+          comicsSearch={comicsSearch}
+          comics={comics}
+          setShowComicsRec={setShowComicsRec}
+          showComicsRec={showComicsRec} />
+
+        {(showLoginForm || showRegistrationForm) &&
+          <Login showLoginForm={showLoginForm}
+            setShowLoginForm={setShowLoginForm}
+            setShowRegistrationForm={setShowRegistrationForm}
+            showRegistrationForm={showRegistrationForm}
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn} />}
       </div>
-      {display === "comics" && <AvailableComics comics={comics} />}
-      {/* {display === "home"} */}
-      
-      <HeroSearchbar setHeroSearch={setHeroSearch}
-      heroSearch={heroSearch}
-      heroes={heroes}
-      setShowHeroesRec={setShowHeroesRec}
-      showHeroesRec={showHeroesRec} />
-
-      <ComicsSearchbar setComicsSearch={setComicsSearch}
-      comicsSearch={comicsSearch}
-      comics={comics}
-      setShowComicsRec={setShowComicsRec}
-      showComicsRec={showComicsRec} />
-
-      {(showLoginForm || showRegistrationForm) &&
-      <Login showLoginForm={showLoginForm}
-      setShowLoginForm={setShowLoginForm}
-      setShowRegistrationForm={setShowRegistrationForm}
-      showRegistrationForm={showRegistrationForm}
-      loggedIn = {loggedIn}
-      setLoggedIn = {setLoggedIn}/>}
     </div>
+    </div>
+     </div>
   );
 }
 
