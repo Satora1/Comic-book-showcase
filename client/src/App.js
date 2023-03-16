@@ -15,6 +15,8 @@ function App() {
   const [showComicsRec, setShowComicsRec] = useState(false)
   const [display, setDisplay] = useState("home")
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
 
 
   function handleGlobalClick(e) {
@@ -47,18 +49,34 @@ function App() {
 
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <div className="buttons">
+      <div className="Nav">
         <div onClick={(e) => setDisplay("comics")}>COMICS</div>
         <div onClick={(e) => setDisplay("home")}>HOME</div>
-        <div onClick={() => setShowLoginForm(true)}>LOGIN</div>
+        {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
+          <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+        {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
       </div>
-      <div className="comic-list">
-        {display === "comics" && <AvailableComics comics={comics} />}
-      </div>
-      {/* {display === "home"} */}
-      <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
-      <ComicsSearchbar setComicsSearch={setComicsSearch} comicsSearch={comicsSearch} comics={comics} setShowComicsRec={setShowComicsRec} showComicsRec={showComicsRec} />
-      {showLoginForm && <Login showLoginForm = {showLoginForm} setShowLoginForm = {setShowLoginForm} />}
+      {display === "comics" && <div>
+        <ComicsSearchbar setComicsSearch={setComicsSearch}
+          comicsSearch={comicsSearch}
+          comics={comics}
+          setShowComicsRec={setShowComicsRec}
+          showComicsRec={showComicsRec} />
+        <div className="comic-list">
+          <AvailableComics comics={comics} /></div></div>}
+      {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
+        heroSearch={heroSearch}
+        heroes={heroes}
+        setShowHeroesRec={setShowHeroesRec}
+        showHeroesRec={showHeroesRec} />}
+
+      {(showLoginForm || showRegistrationForm) &&
+        <Login showLoginForm={showLoginForm}
+          setShowLoginForm={setShowLoginForm}
+          setShowRegistrationForm={setShowRegistrationForm}
+          showRegistrationForm={showRegistrationForm}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn} />}
     </div>
   );
 }
