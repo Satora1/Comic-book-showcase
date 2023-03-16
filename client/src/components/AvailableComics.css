@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans&display=swap');
 /* .comic-list-card {
     display: inline-block;
     width: 100px;
@@ -22,5 +23,39 @@
 
 .comic-list-title {
     width: 12vw;
+    font-family: 'Montserrat', sans-serif;
 }
 
+.comic-card-container {
+    display: flex;
+    width: 85vh;
+    flex-direction: row;
+}
+
+.comic-image {
+    width: 20vw;
+    display: flex;
+    float: left;
+}
+
+.comic-card {
+    flex: auto;
+}
+
+.comic-title, .comic-published, .comic-cover-artist, .comic-desc, .comic-published-title, .comic-cover-artist-title {
+    display: flex;
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 5%;
+}
+
+.comic-published-title, .comic-cover-artist-title {
+    font-weight: bold;
+}
+
+.comic-desc {
+    text-align: justify;
+}
+
+.close-comic-button {
+    float: right;
+}
