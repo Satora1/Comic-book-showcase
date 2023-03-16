@@ -135,6 +135,10 @@ body {
   right: 0px;
 }
 
+.account-sheet {
+  z-index: 5;
+}
+
 .comic-list {
   display: flex;
   flex-wrap: wrap;
