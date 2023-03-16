@@ -6,9 +6,7 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-const overlay =document.getElementById("overlay")
-
-
+  
 
     const LogToAccount = async (event) => {
         event.preventDefault();
@@ -115,6 +113,7 @@ const overlay =document.getElementById("overlay")
                     <br />
                     <input type="submit" value="LogIn" className="login_button">
                     </input>
+                    <button className="anuluj"onClick={(e)=>props.setShowLoginForm(false) }>cancel </button>
                 </form>
                 <div>{errorMessage}</div>
             </div>
@@ -134,6 +133,7 @@ const overlay =document.getElementById("overlay")
                     <br />
                     <input type="submit" value="Register" className="registration_button">
                     </input>
+                    <button onClick={(e)=>props.setShowRegistrationForm(false) }>cancel </button>
                 </form>
                 <div>{errorMessage}</div>
             </div>}

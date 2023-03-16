@@ -19,12 +19,12 @@ function App() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false)
-  
+
 
 
   function handleGlobalClick(e) {
 
-   
+
 
     if (e.target.className !== "hero_search") {
       setShowHeroesRec(false)
@@ -33,6 +33,7 @@ function App() {
       setShowComicsRec(false)
     }
   }
+
 
 
   useEffect(() => {
@@ -66,53 +67,53 @@ function App() {
   }
 
   return (
-<div>
-  <div className='background-img'>
-    <div class='toolbar'>
-    <div onClick={(e) => handleGlobalClick(e)} className="App">
-      <div className="buttons">
-        <div onClick={(e) => setDisplay("comics")}>COMICS</div>
-        <div onClick={(e) => setDisplay("home")}>HOME</div>
-       </div>
-        <div className='LogIn'>
-        {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
-        
-         <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
-        {loggedIn && <div onClick={(e) => setDisplay("profile")}>PROFILE</div>}
-        {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
+    <div>
+      <div className='background-img'>
+        <div class='toolbar'>
+          <div onClick={(e) => handleGlobalClick(e)} className="App">
+            <div className="buttons">
+              <div onClick={(e) => setDisplay("comics")}>COMICS</div>
+              <div onClick={(e) => setDisplay("home")}>HOME</div>
+            </div>
+            <div className='LogIn'>
+              {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
+
+                <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+              {loggedIn && <div onClick={(e) => setDisplay("profile")}>PROFILE</div>}
+              {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
+            </div>
+            {display === "profile" && <ProfilePanel loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              deleteAccount={deleteAccount} />}
+            {display === "comics" && <div>
+
+              <ComicsSearchbar setComicsSearch={setComicsSearch}
+                comicsSearch={comicsSearch}
+                comics={comics}
+                setShowComicsRec={setShowComicsRec}
+                showComicsRec={showComicsRec} />
+
+              <div className="comic-list">
+                <AvailableComics comics={comics} /></div></div>}
+
+            {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
+              heroSearch={heroSearch}
+              heroes={heroes}
+              setShowHeroesRec={setShowHeroesRec}
+              showHeroesRec={showHeroesRec} />}
+
+            {(showLoginForm || showRegistrationForm) &&
+              <Login showLoginForm={showLoginForm}
+                setShowLoginForm={setShowLoginForm}
+                setShowRegistrationForm={setShowRegistrationForm}
+                showRegistrationForm={showRegistrationForm}
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn} />}
+
+          </div>
+        </div>
       </div>
-      {display === "profile" && <ProfilePanel loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        deleteAccount={deleteAccount} />}
-      {display === "comics" && <div>
-
-        <ComicsSearchbar setComicsSearch={setComicsSearch}
-          comicsSearch={comicsSearch}
-          comics={comics}
-          setShowComicsRec={setShowComicsRec}
-          showComicsRec={showComicsRec} />
-
-        <div className="comic-list">
-          <AvailableComics comics={comics} /></div></div>}
-
-      {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
-        heroSearch={heroSearch}
-        heroes={heroes}
-        setShowHeroesRec={setShowHeroesRec}
-        showHeroesRec={showHeroesRec} />}
-
-      {(showLoginForm || showRegistrationForm) &&
-        <Login showLoginForm={showLoginForm}
-          setShowLoginForm={setShowLoginForm}
-          setShowRegistrationForm={setShowRegistrationForm}
-          showRegistrationForm={showRegistrationForm}
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn} />}
-
     </div>
-    </div>
-    </div>
-     </div>
   );
 }
 
