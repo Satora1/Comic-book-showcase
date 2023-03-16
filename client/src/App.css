@@ -13,8 +13,20 @@ body {
 
 .recommendations {
   height: 20vh;
-  width: 20vw;
+  width: 21.9vw;
   overflow-y: auto;
+}
+
+.hero_search_container {
+  position: absolute;
+  top: 50vh;
+  left: 39vw;
+}
+.comics_search_container {
+  position: absolute;
+  top: 3vh;
+  left: 39vw;
+  z-index: 2;
 }
 
 .hero_search_container,
@@ -23,25 +35,29 @@ body {
   border-top-left-radius: 20%;
   border-top-right-radius: 20%;
   display: flex;
-  position: absolute;
-  width: 22vw;
-  top: 50vh;
-  left: 39vw;
+  width: 21.4vw;
   flex-direction: column;
   align-items: center;
 }
-.hero_search {
-  width: 21vw;
-}
 
-.recommendations {
-  width: 21.9vw;
+.hero_search,
+.comics_search {
+  width: 21vw;
 }
 
 .heroName {
   opacity: 0.5;
 }
+
 .heroName:hover {
+  opacity: 1;
+}
+
+.comicName {
+  opacity: 0.5;
+}
+
+.comicName:hover {
   opacity: 1;
 }
 
@@ -61,8 +77,9 @@ body {
   background: url("../src/components/IMG/Comic.jpg") no-repeat center/cover;
   opacity: 0.2;
 }
+
 .toolbar {
-  background-color:#ED1E23;
+  background-color: #ED1E23;
   height: 50px;
   width: 100%;
   position: fixed;
@@ -99,15 +116,15 @@ body {
 .buttons {
   display: flex;
   align-items: center;
-margin-inline: 150px;
+  margin-inline: 150px;
 
   justify-content: center;
 }
 
 .buttons div {
   margin-right: 100px;
- 
- 
+
+
 }
 
 .LogIn {
@@ -121,12 +138,15 @@ margin-inline: 150px;
 .comic-list {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
+  position:absolute;
+  z-index: 1;
+  top: 10vh;
+  height: 90vh;
   overflow: auto;
-  
+
 }
 
-.heroCard{
+.heroCard {
   height: 100vh;
   width: 700px;
   overflow: auto;
@@ -146,9 +166,11 @@ margin-inline: 150px;
   border: 2px solid black
 }
 
-.email_label ,.input_label ,.password_label, .nick_label
-{
+.email_label,
+.input_label,
+.password_label,
+.nick_label {
   position: fixed;
- margin-left: -12vh;
- overflow: auto;
+  margin-left: -12vh;
+  overflow: auto;
 }
