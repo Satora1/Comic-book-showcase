@@ -19,9 +19,12 @@ function App() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false)
+  
 
 
   function handleGlobalClick(e) {
+
+   
 
     if (e.target.className !== "hero_search") {
       setShowHeroesRec(false)

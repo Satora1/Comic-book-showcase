@@ -6,6 +6,8 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+const overlay =document.getElementById("overlay")
+
 
 
     const LogToAccount = async (event) => {

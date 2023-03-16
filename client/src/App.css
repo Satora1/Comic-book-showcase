@@ -85,6 +85,8 @@ margin-inline: 150px;
 }
 
 .LogIn {
+  width: 500px;
+  height: 600px;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -93,5 +95,34 @@ margin-inline: 150px;
 .comic-list {
   display: flex;
   flex-wrap: wrap;
+  height: 100vh;
+  overflow: auto;
+  
 }
 
+.heroCard{
+  height: 100vh;
+  width: 700px;
+  overflow: auto;
+}
+
+.account-sheet {
+  height: 150px;
+  width: 300px;
+  overflow: auto;
+  background-color: beige;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  border-radius: 25px;
+  border: 2px solid black
+}
+
+.email_label ,.input_label ,.password_label, .nick_label
+{
+  position: fixed;
+ margin-left: -12vh;
+ overflow: auto;
+}
