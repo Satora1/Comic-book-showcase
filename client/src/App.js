@@ -5,6 +5,7 @@ import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
 import LOGS from './components/SinginActions';
 import Login from './components/Login';
+import Modal from "react-modal";
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
     getComics()
     getHeroes()
   }, [])
+
+  // Modal.setAppElement('.App');
 
   return (
     <div onClick={(e) => handleGlobalClick(e)} className="App">

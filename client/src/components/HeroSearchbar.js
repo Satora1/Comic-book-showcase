@@ -43,6 +43,7 @@ function HeroSearchbar(props) {
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Hero-modal"
+                appElement={document.getElementById("root")|| undefined}
             >
                 {modalIsOpen && <div className="heroCard">
                     <button onClick={closeModal}>X</button>
