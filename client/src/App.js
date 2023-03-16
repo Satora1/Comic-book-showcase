@@ -52,6 +52,7 @@ function App() {
   // Modal.setAppElement('.App');
 
   return (
+
     <div onClick={(e) => handleGlobalClick(e)} className="App">
       <div className="Nav">
         <div onClick={(e) => setDisplay("comics")}>COMICS</div>
@@ -61,11 +62,13 @@ function App() {
         {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
       </div>
       {display === "comics" && <div>
+
         <ComicsSearchbar setComicsSearch={setComicsSearch}
           comicsSearch={comicsSearch}
           comics={comics}
           setShowComicsRec={setShowComicsRec}
           showComicsRec={showComicsRec} />
+
         <div className="comic-list">
           <AvailableComics comics={comics} /></div></div>}
       {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
@@ -81,7 +84,9 @@ function App() {
           showRegistrationForm={showRegistrationForm}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn} />}
+
     </div>
+     </div>
   );
 }
 
