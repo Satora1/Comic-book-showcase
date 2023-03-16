@@ -15,6 +15,8 @@ function App() {
   const [showComicsRec, setShowComicsRec] = useState(false)
   const [display, setDisplay] = useState("home")
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
 
 
   function handleGlobalClick(e) {
@@ -50,13 +52,30 @@ function App() {
       <div className="buttons">
         <div onClick={(e) => setDisplay("comics")}>COMICS</div>
         <div onClick={(e) => setDisplay("home")}>HOME</div>
-        <div onClick={() => setShowLoginForm(true)}>LOGIN</div>
+        {(!showLoginForm && !showRegistrationForm) && <div onClick={() => setShowLoginForm(true)}>LOGIN</div>}
       </div>
       {display === "comics" && <AvailableComics comics={comics} />}
       {/* {display === "home"} */}
-      <HeroSearchbar setHeroSearch={setHeroSearch} heroSearch={heroSearch} heroes={heroes} setShowHeroesRec={setShowHeroesRec} showHeroesRec={showHeroesRec} />
-      <ComicsSearchbar setComicsSearch={setComicsSearch} comicsSearch={comicsSearch} comics={comics} setShowComicsRec={setShowComicsRec} showComicsRec={showComicsRec} />
-      {showLoginForm && <Login showLoginForm = {showLoginForm} setShowLoginForm = {setShowLoginForm} />}
+      
+      <HeroSearchbar setHeroSearch={setHeroSearch}
+      heroSearch={heroSearch}
+      heroes={heroes}
+      setShowHeroesRec={setShowHeroesRec}
+      showHeroesRec={showHeroesRec} />
+
+      <ComicsSearchbar setComicsSearch={setComicsSearch}
+      comicsSearch={comicsSearch}
+      comics={comics}
+      setShowComicsRec={setShowComicsRec}
+      showComicsRec={showComicsRec} />
+
+      {(showLoginForm || showRegistrationForm) &&
+      <Login showLoginForm={showLoginForm}
+      setShowLoginForm={setShowLoginForm}
+      setShowRegistrationForm={setShowRegistrationForm}
+      showRegistrationForm={showRegistrationForm}
+      loggedIn = {loggedIn}
+      setLoggedIn = {setLoggedIn}/>}
     </div>
   );
 }
