@@ -23,7 +23,7 @@ const Login = (props) => {
                 setErrorMessage("")
                 props.setShowLoginForm(false);
                 props.setLoggedIn([true, response.data[1]])
-            } else if (response.data == "user not found") {
+            } else if (response.data === "user not found") {
                 setErrorMessage("Incorrect nick or password")
             } else {
                 setErrorMessage("An error occurred! Please Try again")

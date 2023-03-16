@@ -5,6 +5,8 @@ import ComicsSearchbar from './components/ComicsSearchbar'
 import AvailableComics from './components/AvailableComics'
 import ProfilePanel from './components/ProfilePanel'
 import Login from './components/Login';
+import Modal from "react-modal";
+
 
 function App() {
   const [heroes, setHeroes] = useState("")
@@ -61,6 +63,7 @@ function App() {
   }
 
   return (
+
     <div onClick={(e) => handleGlobalClick(e)} className="App">
       <div className="Nav">
         <div onClick={(e) => setDisplay("comics")}>COMICS</div>
@@ -74,12 +77,16 @@ function App() {
         setLoggedIn={setLoggedIn}
         deleteAccount={deleteAccount} />}
       {display === "comics" && <div>
+
         <ComicsSearchbar setComicsSearch={setComicsSearch}
           comicsSearch={comicsSearch}
           comics={comics}
           setShowComicsRec={setShowComicsRec}
           showComicsRec={showComicsRec} />
-        <AvailableComics comics={comics} /></div>}
+
+        <div className="comic-list">
+          <AvailableComics comics={comics} /></div></div>}
+
       {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
         heroSearch={heroSearch}
         heroes={heroes}
@@ -93,6 +100,7 @@ function App() {
           showRegistrationForm={showRegistrationForm}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn} />}
+
     </div>
   );
 }
