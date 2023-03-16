@@ -40,8 +40,7 @@ function App() {
     const getHeroes = async () => {
       const response = await fetch('http://localhost:5000/heroes')
       const data = await response.json();
-      setHeroes(data)
-
+      setHeroes(data.heroes)
     }
     const getComics = async () => {
       const response = await fetch('http://localhost:5000/comics');
@@ -69,7 +68,7 @@ function App() {
   return (
     <div>
       <div className='background-img'>
-        <div class='toolbar'>
+        <div className='toolbar'>
           <div onClick={(e) => handleGlobalClick(e)} className="App">
             <div className="buttons">
               <div onClick={(e) => setDisplay("comics")}>COMICS</div>

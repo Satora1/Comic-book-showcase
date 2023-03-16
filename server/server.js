@@ -15,10 +15,18 @@ mongoose.connect("mongodb+srv://satora:gapa1525@cluster0.m1tgxtj.mongodb.net/tes
   })
 
 app.get('/heroes', async (req, res) => {
-  const response = await fetch('https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&&orderBy=modified&limit=100');
-
-  const data = await response.json();
-  res.json(data.data.results)
+  let offset = 0
+  const heroes = [] 
+  while (offset < 1200) {
+    console.log("lol")
+    let url = 'https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&&offset=' + offset + '&limit=100'
+    const response = await fetch(url);
+    const data = await response.json();
+    data.data.results.map(el => heroes.push(el))
+    offset += 300
+  }
+  console.log(heroes)
+  res.json({ "heroes": heroes })
 })
 
 app.get('/comics', async (req, res) => {
