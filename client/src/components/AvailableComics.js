@@ -1,16 +1,65 @@
-import "./AvailableComics.css"
+import "./AvailableComics.css";
+import { useState } from "react";
+import Modal from "react-modal";
 
 
-function AvailableComics(props){
-    console.log(props.comics)
+//temporary?
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+    },
+};
+
+
+function AvailableComics(props) {
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [chosenComic, setChosenComic] = useState({})
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    function handleComicClick(e) {
+        const comic = [...props.comics].filter(el => el.id == Number(e.currentTarget.id))[0]
+        // comicCard Pop-up
+        setChosenComic(comic);
+        setIsOpen(true);
+    }
+
+
     return (
         <>
-        {[...props.comics].map(el=> (
-        <div key={el.id} className="comic-list-card">
-            <img className="comic-list-image" src={el.thumbnail.path + ".jpg"} alt="comic front page" />
-            <div className="comic-list-title">{el.title}</div>
-        </div>
-        ))}
-   </> )
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Comic-modal"
+                appElement={document.getElementById("root") || undefined}
+            >
+               {modalIsOpen && <div className="comic-card-container">
+                        <img className="comic-image" src={chosenComic.thumbnail.path + ".jpg"} alt="comic front page" />
+                    <div className="comic-card">
+                        <button className="close-comic-button" onClick={closeModal}>X</button>
+                        <h3 className="comic-title">{chosenComic.title}</h3>
+                        <div className="comic-published-title">Published:</div>
+                        <div className="comic-published">{chosenComic.dates[0].date}</div>
+                        <div className="comic-cover-artist-title">Cover Artist:</div>
+                        <div className="comic-cover-artist">{chosenComic.creators.items[0].name}</div>
+                        <div className="comic-desc">{chosenComic.description}</div>
+                    </div>
+                </div>}
+            </Modal>
+            {[...props.comics].map(el => (
+                <div key={el.id} id={el.id} className="comic-list-card" onClick={handleComicClick}>
+                    <img className="comic-list-image" src={el.thumbnail.path + ".jpg"} alt="comic front page" />
+                    <div className="comic-list-title">{el.title}</div>
+                </div>
+            ))}
+        </>)
 }
 export default AvailableComics
