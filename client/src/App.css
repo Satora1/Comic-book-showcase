@@ -67,6 +67,13 @@ body {
   height: 100vh;
   width: 100%;
 }
+.ReactModal__Content {
+width: 60vw;
+height: 80vh;
+display: flex;
+align-items: center;
+text-align: center;
+}
 
 .background-img::before {
   content: "";
@@ -150,9 +157,18 @@ body {
 }
 
 .heroCard {
-  height: 100vh;
-  width: 700px;
+  width: 60vw;
+  height: inherit;
   overflow: auto;
+}
+.heroCard > div > img{
+  width: 40vh
+}
+.heroCard > button {
+  position: relative;
+  left: 28vw;
+  width: 30px;
+  height: 30px;
 }
 
 .account-sheet {
