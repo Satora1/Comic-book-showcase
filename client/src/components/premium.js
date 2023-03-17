@@ -13,7 +13,6 @@ class Premium extends React.Component {
         <div>
             TESTED
           <div className="films">
-            <img src="../src/components/IMG/Comic.jpg"></img>
             <button onClick={this.handleClickCM}>Capitan Marvel</button>
             <button onClick={this.handleClickWBG}>Wojna Bez Granic</button>
           </div>
