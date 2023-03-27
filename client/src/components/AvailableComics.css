@@ -53,7 +53,8 @@
     margin: 5%;
 }
 
-.comic-published-title, .comic-cover-artist-title {
+.comic-published-title,
+.comic-cover-artist-title {
     font-weight: bold;
 }
 

@@ -85,11 +85,18 @@ function App() {
               <ComicsSearchbar setComicsSearch={setComicsSearch}
                 comicsSearch={comicsSearch}
                 comics={comics}
+                loggedIn={loggedIn}
                 setShowComicsRec={setShowComicsRec}
-                showComicsRec={showComicsRec} />
+                showComicsRec={showComicsRec}
+                setShowLoginForm={setShowLoginForm} />
 
               <div className="comic-list">
-                <AvailableComics comics={comics} /></div></div>}
+                <AvailableComics
+                  comics={comics}
+                  loggedIn={loggedIn}
+                  setShowLoginForm={setShowLoginForm} />
+              </div>
+            </div>}
 
             {display === "home" && <HeroSearchbar setHeroSearch={setHeroSearch}
               heroSearch={heroSearch}
