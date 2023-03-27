@@ -195,3 +195,9 @@ body {
   left: 45vw;
   width: 10vw
 }
+
+.stars {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
