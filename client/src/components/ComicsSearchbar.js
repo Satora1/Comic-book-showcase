@@ -44,11 +44,11 @@ function ComicsSearchbar(props) {
                 appElement={document.getElementById("root")|| undefined}
             >
                 {modalIsOpen && <div className="heroCard">
-                    <button onClick={closeModal}>X</button>
-                    <h2>Name: {chosenComic.name}</h2>
-                    <div><img src={chosenComic.thumbnail.path + ".jpg"} alt="selected hero" /></div>
-                    <div>Description: {chosenComic.description}</div>
-                </div>}
+                        <button onClick={closeModal}>X</button>
+                        <h2>Name: {chosenComic.name}</h2>
+                        <div><img src={chosenComic.thumbnail.path + ".jpg"} alt="selected hero" /></div>
+                        <div>Description: {chosenComic.description}</div>
+                    </div>}
             </Modal>
         </div>)
 }
