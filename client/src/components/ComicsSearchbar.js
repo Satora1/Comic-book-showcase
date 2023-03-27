@@ -27,8 +27,7 @@ function ComicsSearchbar(props) {
         props.setShowComicsRec(true)
     }
     function handleComicClick(e) {
-        const comic = [...props.comics].filter(el => el.title === e.target.innerText)[0]
-        // comicCard Pop-up
+        const comic = [...props.comics].find(el => el.title === e.target.innerText)
         setChosenComic(comic);
         setIsOpen(true);
     }

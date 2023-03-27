@@ -78,6 +78,7 @@ const Login = (props) => {
                     password
                 });
                 console.log(response.data)
+                //TODO refactor res.json to object/ switch
                 if (response.data === "user created") {
                     console.log("Created an account!");
                     setEmail("")
@@ -103,7 +104,7 @@ const Login = (props) => {
         {props.showLoginForm &&
             <div className="account-sheet">
                 <label className="title_label">Log in to your account</label>
-                <div>Don't have an account? <a onClick={OpenRegistrationForm}> Register </a> instead</div>
+                <div>Don't have an account? <a className="register_click" onClick={OpenRegistrationForm}> Register </a> instead</div>
                 <form className="login_form" onSubmit={LogToAccount}>
                     <label className="nick_label">Nick:</label>
                     <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
@@ -113,7 +114,7 @@ const Login = (props) => {
                     <br />
                     <input type="submit" value="LogIn" className="login_button">
                     </input>
-                    <button className="anuluj"onClick={(e)=>props.setShowLoginForm(false) }>cancel </button>
+                    <button className="cancel" onClick={(e)=>props.setShowLoginForm(false) }>cancel</button>
                 </form>
                 <div>{errorMessage}</div>
             </div>

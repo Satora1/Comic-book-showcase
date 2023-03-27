@@ -17,18 +17,18 @@ const customStyles = {
 
 
 function AvailableComics(props) {
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [chosenComic, setChosenComic] = useState({})
 
     function closeModal() {
-        setIsOpen(false);
+        setModalIsOpen(false);
     }
 
     function handleComicClick(e) {
-        const comic = [...props.comics].filter(el => el.id == Number(e.currentTarget.id))[0]
+        const comic = [...props.comics].find(el => el.id == Number(e.currentTarget.id))
         // comicCard Pop-up
         setChosenComic(comic);
-        setIsOpen(true);
+        setModalIsOpen(true);
     }
 
 

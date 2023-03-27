@@ -42,7 +42,12 @@
     flex: auto;
 }
 
-.comic-title, .comic-published, .comic-cover-artist, .comic-desc, .comic-published-title, .comic-cover-artist-title {
+.comic-title,
+.comic-published,
+.comic-cover-artist,
+.comic-desc,
+.comic-published-title,
+.comic-cover-artist-title {
     display: flex;
     font-family: 'Nunito Sans', sans-serif;
     margin: 5%;

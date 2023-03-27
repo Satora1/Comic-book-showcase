@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://satora:gapa1525@cluster0.m1tgxtj.mongodb.net/tes
   .then(() => {
     app.listen(5000, () => console.log('Server set http://localhost:5000'));
   })
-
+//TODO gitignore
 app.get('/heroes', async (req, res) => {
   let offset = 0
   const heroes = [] 

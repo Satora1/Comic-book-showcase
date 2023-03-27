@@ -46,19 +46,11 @@ body {
   width: 21vw;
 }
 
-.heroName {
+.heroName, .comicName {
   opacity: 0.5;
 }
 
-.heroName:hover {
-  opacity: 1;
-}
-
-.comicName {
-  opacity: 0.5;
-}
-
-.comicName:hover {
+.heroName:hover, .comicName:hover {
   opacity: 1;
 }
 
@@ -143,6 +135,10 @@ text-align: center;
 
 .account-sheet {
   z-index: 5;
+}
+
+.register_click {
+color:blue
 }
 
 .comic-list {
