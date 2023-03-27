@@ -10,12 +10,33 @@
 
 .comic-list-image {
     width: 12vw;
-    border-radius: 35px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.comic-list-details-container {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    border-radius: 0px 0px 15px 15px;
+    padding: 7%
+}
+
+.comic-list-title, .comic-list-price {
+    width: 12vw;
+    font-family: 'Roboto', sans-serif;
 }
 
 .comic-list-title {
-    width: 12vw;
-    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    width: 75%;
+    text-align: left;
+}
+
+.comic-list-price {
+    color:#EE171F;
+    font-weight: bold;
+    width: 25%;
 }
 
 .comic-card-container {
