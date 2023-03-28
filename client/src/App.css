@@ -204,3 +204,20 @@ button {
   justify-content: center;
   font-size: x-large;
 }
+
+.comment_container {
+  padding: 20px;
+}
+
+.comment_user {
+  font-size: medium;
+}
+
+.comment_top {
+  display: flex;
+}
+
+.comment_content {
+  text-align: left;
+  color: grey
+}

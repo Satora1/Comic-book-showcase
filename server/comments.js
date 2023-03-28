@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     user: String,
-    comicId: String,
-    comment: String,
-    rating: Number
+    comicId: Number,
+    commentContent: String,
+    stars: String
 });
 
 const Comment = mongoose.model("Comment", CommentSchema);
 
-export default Comment
+module.exports = Comment

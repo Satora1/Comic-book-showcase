@@ -48,7 +48,7 @@ function AvailableComics(props) {
                         zIndex={2}
                         loggedIn={props.loggedIn}
                         closeModal={closeModal}
-                        setShowLoginForm={props.setShowLoginForm}/>}
+                        setShowLoginForm={props.setShowLoginForm} />}
             </Modal>
             {[...props.comics].map(el => (
                 <div key={el.id} id={el.id} className="comic-list-card" onClick={handleComicClick}>
