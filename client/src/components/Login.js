@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 //import bcrypt from "bcrypt";
 
+
+
+import Modal from "react-modal";
 
 
 const Login = (props) => {
@@ -9,6 +13,12 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [modalIsOpen, setIsOpen] = useState(true);
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
 
     const LogToAccount = async (event) => {
@@ -115,45 +125,66 @@ const Login = (props) => {
         }
     }
 
-    return (<div>
-        {props.showLoginForm &&
-            <div className="account-sheet">
-                <label className="title_label">Log in to your account</label>
-                <div>Don't have an account? <a className="register_click" onClick={OpenRegistrationForm}> Register </a> instead</div>
-                <form className="login_form" onSubmit={LogToAccount}>
-                    <label className="nick_label">Nick:</label>
-                    <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
-                    <br />
-                    <label className="password_label">Password:</label>
-                    <input className="password_input" type="password" onChange={(e) => setPassword(e.target.value)} />
-                    <br />
-                    <input type="submit" value="LogIn" className="login_button">
-                    </input>
-                    <button className="cancel" onClick={(e) => props.setShowLoginForm(false)}>cancel</button>
-                </form>
-                <div>{errorMessage}</div>
-            </div>
+    const loginFormStyles = {
+        content: {
+            height: '100px',
+            width: '20vw',
+            position: 'fixed',
+            borderRadius: '25px',
+            top: '30%',
+            left: '35%'
         }
-        {props.showRegistrationForm &&
-            <div className="account-sheet" >
-                <label className="title_label">Create new account</label>
-                <form className="registration_form" onSubmit={createAccount}>
-                    <label className="email_label">E-mail</label>
-                    <input className="email_input" onChange={(e) => setEmail(e.target.value)} />
-                    <br />
-                    <label className="nick_label">Nick:</label>
-                    <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
-                    <br />
-                    <label className="password_label">Password:</label>
-                    <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
-                    <br />
-                    <input type="submit" value="Register" className="registration_button">
-                    </input>
-                    <button className="cancel" onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
-                </form>
-                <div>{errorMessage}</div>
-            </div>}
-    </div>)
+    };
+
+    return (<Modal
+        style={loginFormStyles}
+        isOpen={props.showLoginForm || props.showRegistrationForm}
+        zIndex={7}
+        onRequestClose={closeModal}
+        appElement={document.getElementById("root") || undefined}
+    >
+        <div>
+
+
+            {props.showLoginForm &&
+                <div className="account-sheet">
+                    <label className="title_label">Log in to your account</label>
+                    <div>Don't have an account? <a className="highlighted_click" onClick={OpenRegistrationForm}> Register </a> instead</div>
+                    <form className="login_form" onSubmit={LogToAccount}>
+                        <label className="nick_label">Nick:</label>
+                        <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
+                        <br />
+                        <label className="password_label">Password:</label>
+                        <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
+                        <br />
+                        <input type="submit" value="LogIn" className="login_button">
+                        </input>
+                        <button className="cancel" onClick={(e) => props.setShowLoginForm(false)}>cancel</button>
+                    </form>
+                    <div>{errorMessage}</div>
+                </div>
+            }
+            {props.showRegistrationForm &&
+                <div className="account-sheet">
+                    <label className="title_label">Create new account</label>
+                    <form className="registration_form" onSubmit={createAccount}>
+                        <label className="email_label">E-mail</label>
+                        <input className="email_input" onChange={(e) => setEmail(e.target.value)} />
+                        <br />
+                        <label className="nick_label">Nick:</label>
+                        <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
+                        <br />
+                        <label className="password_label">Password:</label>
+                        <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
+                        <br />
+                        <input type="submit" value="Register" className="registration_button">
+                        </input>
+                        <button onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
+                    </form>
+                    <div>{errorMessage}</div>
+                </div>}
+        </div>
+    </Modal>)
 };
 
 export default Login;

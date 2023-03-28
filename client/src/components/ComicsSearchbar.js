@@ -1,7 +1,8 @@
 import Modal from "react-modal";
 import { useState } from "react";
+import ComicCard from "./ComicCard";
 
-//temporary?
+
 const customStyles = {
     content: {
         top: '50%',
@@ -10,10 +11,9 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-    },
+        zIndex: 5
+    }
 };
-
-// Modal.setAppElement('.hero_search_container');
 
 function ComicsSearchbar(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -34,21 +34,32 @@ function ComicsSearchbar(props) {
 
     return (
         <div className="comics_search_container">
-            <input type="text" className="comics_search" placeholder="Search comics" onClick={(e) => handleInputClick(e)} onChange={(e) => props.setComicsSearch(e.target.value)}></input>
-            {props.showComicsRec && (<div className="recommendations">{[...props.comics].filter(el => el.title.includes(props.comicsSearch)).map((el, i) => (<div className="comicName" key={i} onClick={(e) => handleComicClick(e)}>{el.title}</div>))}</div>)}
+            <input type="text"
+                className="comics_search"
+                placeholder="Search comics"
+                onClick={(e) => handleInputClick(e)}
+                onChange={(e) => props.setComicsSearch(e.target.value)}>
+            </input>
+            {props.showComicsRec &&
+                (<div className="recommendations">
+                    {[...props.comics].filter(el => el.title.includes(props.comicsSearch))
+                        .map((el, i) => (<div className="comicName"
+                            key={i}
+                            onClick={(e) => handleComicClick(e)}>
+                            {el.title}</div>))}</div>)}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Comic-modal"
-                appElement={document.getElementById("root")|| undefined}
+                appElement={document.getElementById("root") || undefined}
             >
-                {modalIsOpen && <div className="heroCard">
-                    <button onClick={closeModal}>X</button>
-                    <h2>Name: {chosenComic.name}</h2>
-                    <div><img src={chosenComic.thumbnail.path + ".jpg"} alt="selected hero" /></div>
-                    <div>Description: {chosenComic.description}</div>
-                </div>}
+                {modalIsOpen && <ComicCard
+                    zIndex={2}
+                    chosenComic={chosenComic}
+                    loggedIn={props.loggedIn}
+                    closeModal={closeModal}
+                    setShowLoginForm={props.setShowLoginForm} />}
             </Modal>
         </div>)
 }

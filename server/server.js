@@ -5,7 +5,8 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 const bodyParser = require('body-parser')
-const LOGS = require("./accountApi")
+const LOGS = require("./accountApi");
+const Comment = require('./comments');
 
 app.use(bodyParser.json())
 app.use("/api", LOGS)
@@ -16,10 +17,10 @@ mongoose.connect("mongodb+srv://satora:gapa1525@cluster0.m1tgxtj.mongodb.net/tes
 //TODO gitignore
 app.get('/heroes', async (req, res) => {
   let offset = 0
-  const heroes = [] 
+  const heroes = []
   while (offset < 1200) {
-    let url = 'https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&&' + 
-    'offset=' + offset + '&limit=100'
+    let url = 'https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&&' +
+      'offset=' + offset + '&limit=100'
     const response = await fetch(url);
     const data = await response.json();
     data.data.results.map(el => heroes.push(el))
@@ -32,4 +33,24 @@ app.get('/comics', async (req, res) => {
   const response = await fetch('https://gateway.marvel.com/v1/public/comics?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&orderBy=modified&limit=100');
   const data = await response.json();
   res.json(data.data.results)
+})
+
+app.post('/comments', async (req, res) => {
+  const user = req.body.user
+  const comicId = req.body.id
+  const commentContent = req.body.commentContent
+  const stars = req.body.stars
+  const comment = new Comment({
+    user,
+    comicId,
+    commentContent,
+    stars
+  })
+  comment.save()
+  res.send("comment added")
+})
+
+app.get('/comments', async (req, res) => {
+  const result = await Comment.find()
+  res.json(result)
 })
