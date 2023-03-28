@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans&family=Roboto&display=swap');
 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 
 .comic-list-card {
     display: flex;
@@ -110,7 +113,7 @@
     padding: 4%;
 }
 
-.add-to-cart {
+.add-to-cart, .submit-comment {
     color: #FFFF;
     min-width: 180px;
     background-color: #EE171F;
@@ -140,7 +143,7 @@
     justify-content: center;
 }
 
-.buy-now:hover, .add-to-cart:hover {
+.buy-now:hover, .add-to-cart:hover, .submit-comment:hover {
     opacity: 75%;
 }
 
@@ -187,4 +190,42 @@
 .in-stock {
     font-size: 16px;
     margin-top: 1%;
+}
+
+.add-stars {    
+    display:flex;
+    flex-direction: column;
+    padding: 5%;
+    margin-top: 5%;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+}
+
+.stars-not-logged-in {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.add-stars-form {
+    padding-bottom: 3%;
+    margin-bottom: 2%;
+}
+
+.submit-comment {
+    background-color: #222222;
+    color:white;
+    margin: 0px;
+}
+
+.comment-input {
+    padding: 10px;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+    width:100%;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
 }

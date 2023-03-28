@@ -140,7 +140,8 @@ button {
 }
 
 .highlighted_click {
-  color: blue
+  color: blue;
+  cursor:pointer;
 }
 
 .comic-list {

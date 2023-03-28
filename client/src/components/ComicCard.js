@@ -1,4 +1,6 @@
 import { useState } from "react"
+import "./AvailableComics.css";
+
 
 function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
     const [commentContent, setCommentContent] = useState("")
@@ -15,48 +17,54 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
 
 
     return <div className="comic-card-container">
-        <img className="comic-image" src={chosenComic.thumbnail.path + ".jpg"} alt="comic front page" />
+        <div className="image">
+            <img className="comic-image" src={chosenComic.thumbnail.path + ".jpg"} alt="comic front page" />
+        </div>
         <div className="comic-card">
-            <button className="close-comic-button" onClick={closeModal}>X</button>
             <h3 className="comic-title">{chosenComic.title}</h3>
             <div className="comic-published-title">Published:</div>
-            <div className="comic-published">{chosenComic.dates[0].date}</div>
+            <div className="comic-published">{chosenComic.dates[0].date.slice(0, 10)}</div>
             <div className="comic-cover-artist-title">Cover Artist:</div>
             <div className="comic-cover-artist">{chosenComic.creators.items[0].name}</div>
             <div className="comic-desc">{chosenComic.description}</div>
-            <div className="third-column">
-                <div className="button-div">
-                    <button className="close-comic-button" onClick={closeModal}>X</button>
-                </div>
-                <div className="add-to-cart-popup">
-                    <div className="comic-price">Price: ${chosenComic.prices[0].price}</div>
-                    <div className="in-stock">Availability: in stock</div>
-                    <div className="comic-display-cart-buttons">
-                        <button type="button" className="add-to-cart" onClick="">Add to cart</button>
-                        <button type="button" className="buy-now" onClick="">Buy now</button>
-                    </div>
-                </div>
-
+        </div>
+        <div className="third-column">
+            <div className="button-div">
+                <button className="close-comic-button" onClick={closeModal}>X</button>
             </div>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-            {loggedIn && <form onSubmit={(e) => AddComment(e)}>
-                <div className="stars">
-                    {[1, 2, 3, 4, 5].map(el => (
-                        el > stars ? (<div id={el}
-                            style={{ color: "grey" }}
-                            onClick={(e) => setStars(e.target.id)}
-                            className="fa fa-star"></div>) :
-                            (<div id={el}
-                                style={{ color: "orange" }}
-                                onClick={(e) => setStars(e.target.id)}
-                                className="fa fa-star"></div>)
-                    ))}
+            <div className="add-to-cart-popup">
+                <div className="comic-price">Price: ${chosenComic.prices[0].price}</div>
+                <div className="in-stock">Availability: in stock</div>
+                <div className="comic-display-cart-buttons">
+                    <button type="button" className="add-to-cart" onClick="">Add to cart</button>
+                    <button type="button" className="buy-now" onClick="">Buy now</button>
                 </div>
-                <input type="text" placeholder="Add Comment" onChange={(e) => setCommentContent(e.target.value)}></input>
-                <input type="submit" className="submit-comment" value="Add"></input>
-            </form>
-            }
-            {!loggedIn && <div>To post comments, you have to be <a onClick={() => setShowLoginForm(true)}>logged in</a></div>}
+            </div>
+            <div className="add-stars">
+            {loggedIn && false ? console.log("hello") : console.log("not hello")}
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                <form className="add-stars-form" onSubmit={(e) => AddComment(e)}>
+                    <div className="stars">
+                        {[1, 2, 3, 4, 5].map(el => (
+                            el > stars ? (<div id={el}
+                                key={el}
+                                style={{ color: "grey" }}
+                                onClick={(e) => setStars(e.target.id)}
+                                className="fa fa-star"></div>) :
+                                (<div id={el}
+                                    key={el}
+                                    style={{ color: "orange" }}
+                                    onClick={(e) => setStars(e.target.id)}
+                                    className="fa fa-star"></div>)
+                        ))}
+                    </div>
+                    <textarea className="comment-input" type="text" placeholder="Add Comment" onChange={(e) => setCommentContent(e.target.value)} rows="4" cols="50"></textarea>
+                    {/* <input className="comment-input" type="text" placeholder="Add Comment" onChange={(e) => setCommentContent(e.target.value)}></input> */}
+                    <button type="submit" className="submit-comment" value="Add">Add comment</button>
+                </form>
+                
+                {/* {!loggedIn && <div className="stars-not-logged-in">To post comments, you have to be <a className="highlighted_click" onClick={() => setShowLoginForm(true)}>logged in</a></div>} */}
+            </div>
         </div>
     </div>
 }
