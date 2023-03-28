@@ -13,7 +13,8 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-    }
+        height: "fit-content",
+    },
 };
 
 
@@ -52,7 +53,10 @@ function AvailableComics(props) {
             {[...props.comics].map(el => (
                 <div key={el.id} id={el.id} className="comic-list-card" onClick={handleComicClick}>
                     <img className="comic-list-image" src={el.thumbnail.path + ".jpg"} alt="comic front page" />
-                    <div className="comic-list-title">{el.title}</div>
+                    <div className="comic-list-details-container">
+                        <div className="comic-list-title">{el.title}</div>
+                        <div className="comic-list-price">${el.prices[0].price}</div>
+                    </div>
                 </div>
             ))}
         </>)

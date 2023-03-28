@@ -24,6 +24,20 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
             <div className="comic-cover-artist-title">Cover Artist:</div>
             <div className="comic-cover-artist">{chosenComic.creators.items[0].name}</div>
             <div className="comic-desc">{chosenComic.description}</div>
+            <div className="third-column">
+                <div className="button-div">
+                    <button className="close-comic-button" onClick={closeModal}>X</button>
+                </div>
+                <div className="add-to-cart-popup">
+                    <div className="comic-price">Price: ${chosenComic.prices[0].price}</div>
+                    <div className="in-stock">Availability: in stock</div>
+                    <div className="comic-display-cart-buttons">
+                        <button type="button" className="add-to-cart" onClick="">Add to cart</button>
+                        <button type="button" className="buy-now" onClick="">Buy now</button>
+                    </div>
+                </div>
+
+            </div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             {loggedIn && <form onSubmit={(e) => AddComment(e)}>
                 <div className="stars">
