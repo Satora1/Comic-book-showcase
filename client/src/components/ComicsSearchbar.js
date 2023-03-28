@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import ComicCard from "./ComicCard";
 
-//temporary?
+
 const customStyles = {
     content: {
         top: '50%',
@@ -14,7 +14,6 @@ const customStyles = {
         zIndex: 5
     }
 };
-// Modal.setAppElement('.hero_search_container');
 
 function ComicsSearchbar(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
