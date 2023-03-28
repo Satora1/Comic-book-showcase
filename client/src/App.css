@@ -10,6 +10,9 @@ body {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+button {
+  border: 0px;
+}
 
 .recommendations {
   height: 20vh;

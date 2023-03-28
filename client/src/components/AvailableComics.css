@@ -1,45 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans&display=swap');
-/* .comic-list-card {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background: #ce8888;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans&family=Roboto&display=swap');
+
 
 .comic-list-card {
     display: flex;
     flex-wrap: wrap;
     width: 12vw;
-    /* height: 40vh; */
     margin: 10px;
-    /* min-width: 250px;
-    min-height: 225px; */
 }
 
 .comic-list-image {
     width: 12vw;
-    /* max-height: 190px; */
+    border-radius: 15px 15px 0px 0px;
+}
+
+.comic-list-details-container {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+    border-radius: 0px 0px 15px 15px;
+    padding: 7%
+}
+
+.comic-list-title, .comic-list-price {
+    width: 12vw;
+    font-family: 'Roboto', sans-serif;
 }
 
 .comic-list-title {
-    width: 12vw;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    width: 75%;
+    text-align: left;
+}
+
+.comic-list-price {
+    color:#EE171F;
+    font-weight: bold;
+    width: 25%;
 }
 
 .comic-card-container {
     display: flex;
-    width: 85vh;
+    width: 100%;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .comic-image {
     width: 20vw;
     display: flex;
-    float: left;
 }
 
 .comic-card {
-    flex: auto;
+    margin-left:1%;
+    margin-right:1%;
+    width: 100%;
 }
 
 .comic-title,
@@ -49,19 +64,127 @@
 .comic-published-title,
 .comic-cover-artist-title {
     display: flex;
-    font-family: 'Nunito Sans', sans-serif;
-    margin: 5%;
+    font-family: 'Roboto', sans-serif;
+    margin: 3%;
+}
+
+.comic-title {
+    margin-bottom: 5%;
 }
 
 .comic-published-title,
 .comic-cover-artist-title {
     font-weight: bold;
+    font-family: 'Roboto', sans-serif;
 }
 
 .comic-desc {
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 16%;
+}
+
+.comic-published,
+.comic-cover-artist {
+    margin-top: 2%;
+}
+
+.add-to-cart-popup  {
+    text-align: left;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 5%;
+    margin-top: 5%;
+    display:flex;
+    flex-direction: column;
+}
+
+.comic-display-cart-buttons {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 12vw;
+    height: 12vh;
+    flex-direction: column;  
+    width: 100%;
+    padding: 4%;
+}
+
+.add-to-cart {
+    color: #FFFF;
+    min-width: 180px;
+    background-color: #EE171F;
+    border-radius: 11.5px;
+    box-shadow: 0px 0px 5px 0px #00000040;
+    margin-top: 10%;
+    padding: 4%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor:pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-now {
+    color:black;
+    min-width: 180px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 4%;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0px 0px 5px 0px #00000040;
+    font-weight: bold;
+    cursor:pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-now:hover, .add-to-cart:hover {
+    opacity: 75%;
+}
+
+.third-column {
+    display:flex;
+    flex-direction: column;
+    align-content: right;
+    margin-left:1%;
+    margin-right:1%;
+    width: 100%;
+}
+
+.button-div {
+    display: flex;
+    width: 100%;
+    justify-content: end;
 }
 
 .close-comic-button {
-    float: right;
+    cursor:pointer;
+    border:none;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.in-stock, .comic-price {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    margin-right: 40px;
+    margin-top: 10px;
+    align-items: left;
+    justify-content: left;
+}
+
+.comic-price {
+    font-size: 28px;
+    color: #EE171F;
+}
+
+.in-stock {
+    font-size: 16px;
+    margin-top: 1%;
 }
