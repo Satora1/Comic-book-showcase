@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Premium from "./premium";
+//import bcrypt from "bcrypt";
+
+
 
 const Login = (props) => {
     const [nick, setNick] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-  
+
 
     const LogToAccount = async (event) => {
         event.preventDefault();
@@ -62,8 +64,18 @@ const Login = (props) => {
         else { return true }
     }
 
+
+
+
+
+
     const createAccount = async (event) => {
         event.preventDefault();
+
+
+
+
+
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             alert("Please enter a valid email address")
         }
@@ -73,6 +85,8 @@ const Login = (props) => {
         else if (passwordIsCorrect()) {
 
             try {
+
+                //password=  bcrypt.hash(password,10)
                 const response = await axios.post("http://localhost:5000/api/register", {
                     email,
                     nick,
@@ -111,17 +125,17 @@ const Login = (props) => {
                     <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
                     <br />
                     <label className="password_label">Password:</label>
-                    <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
+                    <input className="password_input" type="password" onChange={(e) => setPassword(e.target.value)} />
                     <br />
                     <input type="submit" value="LogIn" className="login_button">
                     </input>
-                    <button className="cancel" onClick={(e)=>props.setShowLoginForm(false) }>cancel</button>
+                    <button className="cancel" onClick={(e) => props.setShowLoginForm(false)}>cancel</button>
                 </form>
                 <div>{errorMessage}</div>
             </div>
         }
         {props.showRegistrationForm &&
-            <div className="account-sheet">
+            <div className="account-sheet" >
                 <label className="title_label">Create new account</label>
                 <form className="registration_form" onSubmit={createAccount}>
                     <label className="email_label">E-mail</label>
@@ -135,7 +149,7 @@ const Login = (props) => {
                     <br />
                     <input type="submit" value="Register" className="registration_button">
                     </input>
-                    <button onClick={(e)=>props.setShowRegistrationForm(false) }>cancel </button>
+                    <button className="cancel" onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
                 </form>
                 <div>{errorMessage}</div>
             </div>}
