@@ -173,8 +173,8 @@ button {
 }
 
 .account-sheet {
-  height: 200px;
-  width: 30vw;
+  height: 300px;
+  width: 35vw;
   overflow: auto;
 
   border-radius: 25px;

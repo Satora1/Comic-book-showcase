@@ -155,7 +155,7 @@ const Login = (props) => {
                         <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
                         <br />
                         <label className="password_label">Password:</label>
-                        <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
+                        <input className="password_input" type="password" onChange={(e) => setPassword(e.target.value)} />
                         <br />
                         <input type="submit" value="LogIn" className="login_button">
                         </input>
@@ -179,7 +179,7 @@ const Login = (props) => {
                         <br />
                         <input type="submit" value="Register" className="registration_button">
                         </input>
-                        <button onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
+                        <button className="cancel" onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
                     </form>
                     <div>{errorMessage}</div>
                 </div>}
