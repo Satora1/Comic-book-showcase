@@ -14,6 +14,7 @@ button {
   border: 0px;
 }
 
+
 .recommendations {
   height: 20vh;
   width: 21.9vw;
@@ -175,21 +176,17 @@ button {
   height: 200px;
   width: 30vw;
   overflow: auto;
-  background-color: beige;
-  position: fixed;
-  top: 30%;
-  left: 35%;
-  border-radius: 25px;
-  border: 2px solid black
-}
 
-.email_label,
-.input_label,
-.password_label,
-.nick_label {
+  border-radius: 25px;
+  border: 2px solid black;
+  box-shadow:  16px 16px 16px 16px black;
   position: fixed;
-  margin-left: -12vh;
-  overflow: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("./components/IMG/marvel.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .profile_panel {
@@ -217,7 +214,91 @@ button {
   display: flex;
 }
 
+
+.email_label,
+.password_label,
+.nick_label {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px;
+  margin-right: -300px; 
+  float: left;
+}
+
+.email_label {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+.password_label {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.nick_label {
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.email_input,
+.password_input,
+.nick_input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background-color: rgb(62, 80, 214);
+}
+
+.email_input:focus,
+.password_input:focus,
+.nick_input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.login_button,
+.registration_button,
+.cancel {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  margin-top: 60px;
+  margin-right: 20px;
+}
+
+.login_button {
+  background-color: green;
+  color: white;
+}
+
+.registration_button {
+  background-color: blue;
+  color: white;
+}
+
+.cancel {
+  background-color: red;
+  color: white;
+}
+
+
 .comment_content {
   text-align: left;
   color: grey
 }
+

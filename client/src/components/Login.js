@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
+
+//import bcrypt from "bcrypt";
+
+
+
 import Modal from "react-modal";
+
 
 const Login = (props) => {
     const [nick, setNick] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
     const [modalIsOpen, setIsOpen] = useState(true);
 
     function closeModal() {
         setIsOpen(false);
     }
+
 
     const LogToAccount = async (event) => {
         event.preventDefault();
@@ -66,8 +74,18 @@ const Login = (props) => {
         else { return true }
     }
 
+
+
+
+
+
     const createAccount = async (event) => {
         event.preventDefault();
+
+
+
+
+
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             alert("Please enter a valid email address")
         }
@@ -77,6 +95,8 @@ const Login = (props) => {
         else if (passwordIsCorrect()) {
 
             try {
+
+                //password=  bcrypt.hash(password,10)
                 const response = await axios.post("http://localhost:5000/api/register", {
                     email,
                     nick,

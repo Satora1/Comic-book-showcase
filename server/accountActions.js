@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt =require("bcrypt")
 
 const schema = new mongoose.Schema({
   email: String,
@@ -10,33 +11,41 @@ const LOGIN = mongoose.model("ActionsLog", schema);
 
 class LogActions {
   async register(req, res) {
-    console.log(req.body)
+    console.log(req.body);
     const { email, nick, password } = req.body;
-    const sameNick = await LOGIN.findOne({ nick: req.body.nick })
-    const sameEmail = await LOGIN.findOne({ nick: req.body.email })
-    if (sameNick) { res.json("Nickname already in use") }
-    else if (sameEmail) { res.json("Email already in use") }
+    const sameNick = await LOGIN.findOne({ nick: req.body.nick });
+    const sameEmail = await LOGIN.findOne({ email: req.body.email });
+    if (sameNick) { res.json("Nickname already in use"); }
+    else if (sameEmail) { res.json("Email already in use"); }
     else {
-      const log = new LOGIN({ email, nick, password });
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const log = new LOGIN({ email, nick, password: hashedPassword });
       await log.save();
       res.json("user created");
     }
   }
-
+  
   async login(req, res) {
     try {
-      const user = await LOGIN.findOne({ nick: req.body.nick, password: req.body.password })
+      const { nick, password } = req.body;
+      const user = await LOGIN.findOne({ nick });
       if (!user) {
-        res.json("user not found")
+        res.json("user not found");
+        return;
       }
-      if (user) {
-        res.json(["user found", user])
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (isMatch) {
+        res.json(["user found", user]);
+      } else {
+        res.json("password incorrect");
       }
-    } catch {
-      console.error()
+    } catch (error) {
+      console.error(error);
+      res.json("an error occurred");
     }
   }
-
+  
+  
   async deleteAccount(req, res) {
     console.log(req.body)
       await LOGIN.deleteOne({ nick: req.body.nick })
@@ -48,10 +57,6 @@ class LogActions {
         });
     }
 
-    async Premium(req,res){
- console.log("ok")
-  await res.send("premium")
-}
 
 }
 

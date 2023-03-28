@@ -67,13 +67,14 @@ function App() {
         <div className='toolbar'>
           <div onClick={(e) => handleGlobalClick(e)} className="App">
             <div className="buttons">
+
               <div onClick={(e) => setDisplay("comics")}>COMICS</div>
               <div onClick={(e) => setDisplay("home")}>HOME</div>
             </div>
             <div className='LogIn'>
               {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
 
-                <div className="log_manage" onClick={() => setShowLoginForm(true)}>LOGIN</div>}
+                <div className="log_manage" onClick={() => setShowLoginForm(true)}>Login</div>}
               {loggedIn && <div onClick={(e) => setDisplay("profile")}>PROFILE</div>}
               {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
             </div>
