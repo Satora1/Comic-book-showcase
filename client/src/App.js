@@ -88,7 +88,7 @@ function App() {
                 loggedIn={loggedIn}
                 setShowComicsRec={setShowComicsRec}
                 showComicsRec={showComicsRec}
-                setShowLoginForm={setShowLoginForm} />
+                setShowLoginForm={setShowLoginForm}/>
 
               <div className="comic-list">
                 <AvailableComics

@@ -1,14 +1,31 @@
-import { useState } from "react"
-import "./AvailableComics.css";
-
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
     const [commentContent, setCommentContent] = useState("")
     const [stars, setStars] = useState(0)
+    const [chosenComicComments, setChosenComicComments] = useState([])
 
-    function AddComment(e) {
+    useEffect(() => {
+        const getComments = async () => {
+            const response = await fetch('http://localhost:5000/comments');
+            const data = await response.json();
+            setChosenComicComments(data.filter(comment => comment.comicId === chosenComic.id))
+        }
+        getComments()
+    }, [chosenComicComments]
+    )
+    async function AddComment(e) {
         e.preventDefault()
-        //commentContent
+        const user = loggedIn[1].nick
+        const id = chosenComic.id
+        const response = async () => await axios.post("http://localhost:5000/comments", {
+            user,
+            id,
+            commentContent,
+            stars
+        });
+        response()
         e.target.children[1].value = ""
         setStars(0)
         setCommentContent("")
@@ -64,6 +81,26 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
                 </form>
                 
                 {/* {!loggedIn && <div className="stars-not-logged-in">To post comments, you have to be <a className="highlighted_click" onClick={() => setShowLoginForm(true)}>logged in</a></div>} */}
+            </div>
+            <div>
+                {[...chosenComicComments].map(comment => (
+                    <div key={comment.id} className="comment_container">
+                        <div className="comment_top">
+                            <div className="comment_user">{comment.user}</div>
+                            <div>{[1, 2, 3, 4, 5].map(el => (
+                                el > comment.stars ? (<div id={el}
+                                    key={el}
+                                    style={{ color: "grey" }}
+                                    className="fa fa-star"></div>) :
+                                    (<div id={el}
+                                        key={el}
+                                        style={{ color: "orange" }}
+                                        className="fa fa-star"></div>)
+                            ))}</div>
+                        </div>
+                        <div className="comment_content">{comment.commentContent}</div>
+                    </div>
+                ))}
             </div>
         </div>
     </div>
