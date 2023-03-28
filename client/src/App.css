@@ -49,11 +49,13 @@ button {
   width: 21vw;
 }
 
-.heroName, .comicName {
+.heroName,
+.comicName {
   opacity: 0.5;
 }
 
-.heroName:hover, .comicName:hover {
+.heroName:hover,
+.comicName:hover {
   opacity: 1;
 }
 
@@ -62,12 +64,13 @@ button {
   height: 100vh;
   width: 100%;
 }
+
 .ReactModal__Content {
-width: 60vw;
-height: 80vh;
-display: flex;
-align-items: center;
-text-align: center;
+  width: 60vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .background-img::before {
@@ -136,12 +139,8 @@ text-align: center;
   right: 0px;
 }
 
-.account-sheet {
-  z-index: 5;
-}
-
-.register_click {
-color:blue
+.highlighted_click {
+  color: blue
 }
 
 .comic-list {
@@ -160,10 +159,12 @@ color:blue
   height: inherit;
   overflow: auto;
 }
-.heroCard > div > img{
+
+.heroCard>div>img {
   width: 40vh
 }
-.heroCard > button {
+
+.heroCard>button {
   position: relative;
   left: 28vw;
   width: 30px;
@@ -171,15 +172,13 @@ color:blue
 }
 
 .account-sheet {
-  height: 300px;
-  width: 600px;
+  height: 200px;
+  width: 30vw;
   overflow: auto;
   background-color: beige;
   position: fixed;
   top: 30%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
+  left: 35%;
   border-radius: 25px;
   border: 2px solid black
 }
@@ -194,13 +193,14 @@ color:blue
 }
 
 .profile_panel {
-  position: fixed;
-  top: 30vh;
+  position: absolute;
+  top: 50vh;
   left: 45vw;
-  width: 100vh;
-  margin-top: -50px;
-  margin-left: -100px;
-  height: 100vh;
-  overflow: auto;
+  width: 10vw
 }
 
+.stars {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
