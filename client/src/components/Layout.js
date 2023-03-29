@@ -22,7 +22,7 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                         loggedIn={loggedIn}
                         setLoggedIn={setLoggedIn} />}
                 {loggedIn && <NavLink to='/profile'>PROFILE</NavLink>}
-                {loggedIn && <div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div>}
+                {loggedIn && <NavLink to='/'><div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div></NavLink>}
             </div>
 
         </div >)

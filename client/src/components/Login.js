@@ -39,6 +39,7 @@ const Login = (props) => {
             } else if (response.data === "user not found") {
                 setErrorMessage("Incorrect nick or password")
             } else {
+                console.log(response.data)
                 setErrorMessage("An error occurred! Please Try again")
             }
         } catch (error) {
