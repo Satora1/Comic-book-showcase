@@ -13,6 +13,11 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         height: "fit-content",
+        display: "flex",
+        "flexDirection": "column",
+        "overflowY": "scroll",
+        height:"70vh",
+        width: "60vw",
     },
 };
 

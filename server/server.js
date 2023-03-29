@@ -44,7 +44,8 @@ app.post('/comments', async (req, res) => {
     user,
     comicId,
     commentContent,
-    stars
+    stars,
+    date: Date.now()
   })
   comment.save()
   res.send("comment added")
