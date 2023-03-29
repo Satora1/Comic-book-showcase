@@ -5,7 +5,8 @@ const CommentSchema = new Schema({
     user: String,
     comicId: Number,
     commentContent: String,
-    stars: String
+    stars: String,
+    date: Date,
 });
 
 const Comment = mongoose.model("Comment", CommentSchema);
