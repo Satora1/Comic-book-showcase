@@ -49,7 +49,7 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
                     <div className="comic-published-title">Published:</div>
                     <div className="comic-published">{chosenComic.dates[0].date.slice(0, 10)}</div>
                     <div className="comic-cover-artist-title">Cover Artist:</div>
-                    <div className="comic-cover-artist">{chosenComic.creators.items[0].name ? chosenComic.creators.items[0].name : ""}</div>
+                    <div className="comic-cover-artist">{chosenComic.creators.items.length !== 0 ? chosenComic.creators.items[0].name : ""}</div>
                     <div className="comic-desc">{chosenComic.description}</div>
                 </div>
                 <div className="third-column">
