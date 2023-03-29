@@ -29,7 +29,7 @@ function ComicsSearchbar(props) {
     }
 
     function handleInputClick(e) {
-        props.setShowComicsRec(true)
+        props.setShowComicsRecommendations(true)
     }
     function handleComicClick(e) {
         const comic = [...props.comics].find(el => el.title === e.target.innerText)
@@ -45,7 +45,7 @@ function ComicsSearchbar(props) {
                 onClick={(e) => handleInputClick(e)}
                 onChange={(e) => props.setComicsSearch(e.target.value)}>
             </input>
-            {props.showComicsRec &&
+            {props.showComicsRecommendations &&
                 (<div className="recommendations">
                     {[...props.comics].filter(el => el.title.includes(props.comicsSearch))
                         .map((el, i) => (<div className="comicName"
@@ -60,7 +60,6 @@ function ComicsSearchbar(props) {
                 appElement={document.getElementById("root") || undefined}
             >
                 {modalIsOpen && <ComicCard
-                    zIndex={2}
                     chosenComic={chosenComic}
                     loggedIn={props.loggedIn}
                     closeModal={closeModal}

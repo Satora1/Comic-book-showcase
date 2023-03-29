@@ -33,11 +33,11 @@ class LogActions {
         res.json("user not found");
         return;
       }
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = bcrypt.compare(password, user.password);
       if (isMatch) {
         res.json(["user found", user]);
       } else {
-        res.json("password incorrect");
+        res.json("user not found");
       }
     } catch (error) {
       console.error(error);

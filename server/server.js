@@ -20,7 +20,7 @@ app.get('/heroes', async (req, res) => {
   const heroes = []
   while (offset < 1200) {
     let url = 'https://gateway.marvel.com/v1/public/characters?apikey=72819049b7a70c5a7560906f11e0a0df&hash=28f894fadc80d9f867e83d5ffc4e7f0c&ts=1680007036&&' +
-    'offset=' + offset + '&limit=100'
+      'offset=' + offset + '&limit=100'
     const response = await fetch(url);
     const data = await response.json();
     data.data.results.map(el => heroes.push(el))

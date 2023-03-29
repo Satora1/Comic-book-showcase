@@ -2,7 +2,6 @@ import Modal from "react-modal";
 import { useState } from "react";
 
 
-//temporary?
 const customStyles = {
     content: {
         top: '50%',
@@ -14,7 +13,6 @@ const customStyles = {
     },
 };
 
-// Modal.setAppElement('.hero_search_container');
 
 function HeroSearchbar(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -25,7 +23,7 @@ function HeroSearchbar(props) {
     }
 
     function handleInputClick(e) {
-        props.setShowHeroesRec(true)
+        props.setShowHeroesRecommendations(true)
     }
     function handleHeroClick(e) {
         const hero = [...props.heroes].filter(el => el.name === e.target.innerText)[0]
@@ -37,18 +35,18 @@ function HeroSearchbar(props) {
     return (
         <div className="hero_search_container">
             <input type="text" className="hero_search" placeholder="Search Your Hero" onClick={(e) => handleInputClick(e)} onChange={(e) => props.setHeroSearch(e.target.value)}></input>
-            {props.showHeroesRec && (<div className="recommendations">{[...props.heroes].filter(el => el.name.includes(props.heroSearch)).map((el, i) => (<div className="heroName" key={i} onClick={(e) => handleHeroClick(e)}>{el.name}</div>))}</div>)}
+            {props.showHeroesRecommendations && (<div className="recommendations">{[...props.heroes].filter(el => el.name.includes(props.heroSearch)).map((el, i) => (<div className="heroName" key={i} onClick={(e) => handleHeroClick(e)}>{el.name}</div>))}</div>)}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Hero-modal"
-                appElement={document.getElementById("root")|| undefined}
+                appElement={document.getElementById("root") || undefined}
             >
                 {modalIsOpen && <div className="heroCard">
                     <button onClick={closeModal}>X</button>
                     <h2>Name: {chosenHero.name}</h2>
-                    <div><img src={chosenHero.thumbnail.path + ".jpg"} alt="selected hero"/></div>
+                    <div><img src={chosenHero.thumbnail.path + ".jpg"} alt="selected hero" /></div>
                     <div>Description: {chosenHero.description}</div>
                 </div>}
             </Modal>

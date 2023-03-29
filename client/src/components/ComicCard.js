@@ -15,7 +15,7 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
 
     useEffect(() => {
         getComments()
-    }, [chosenComic]
+    }, [chosenComic, chosenComicComments]
     )
 
     async function AddComment(e, getComments) {
