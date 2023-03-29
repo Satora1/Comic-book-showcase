@@ -205,6 +205,7 @@
 .stars-not-logged-in {
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
+    font-size: 20px;
 }
 
 .add-stars-form {
@@ -228,4 +229,45 @@
     width:100%;
     resize: none;
     font-family: 'Roboto', sans-serif;
+}
+
+
+.comment_container {
+    border: 0.5px solid #C4C4C4;
+    border-radius: 8px;
+    width: 40vw;
+    padding: 1%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.comment_top {
+    margin: 1%;
+    margin-left: 3%;
+}
+
+.comment_content {
+    margin: 1%;
+    margin-left: 5%;
+}
+
+.comment_user {
+    font-weight: bold;
+    margin-right: 1%;
+}
+
+.comment_time {
+    font-style: italic;
+    font-size: 14px;
+    margin-right: 1%;
+    color:#C4C4C4;
+}
+
+.comment_content, .comment_user, .comment_time, .reviews {
+    font-family: 'Roboto', sans-serif;
+}
+
+.reviews {
+    font-size: 24px;
+    margin-top: 8%;
 }
