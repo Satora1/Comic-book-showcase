@@ -287,7 +287,6 @@ button {
 #user_comment_stars {
   max-width: 8vw;
   padding: 1vw;
-  top: 2vh;
   position: relative;
 }
 
@@ -303,9 +302,6 @@ button {
   position: relative;
 }
 
-.comment_time {
-  max-width: 8vw;
-}
 
 .comment_user {
   font-size: medium;

@@ -25,17 +25,13 @@ class LogActions {
   }
 
   async login(req, res) {
-    console.log(req.body)
     const { nick, password } = req.body;
-    console.log(nick, password)
     const user = await LOGIN.findOne({ nick });
     if (!user) {
       res.json("user not found");
       return;
     }
-    console.log(password, user.password)
     bcrypt.compare(password, user.password, (err, result) => {
-      console.log(result)
       if (result) {
         res.send(["user found", user])
       }

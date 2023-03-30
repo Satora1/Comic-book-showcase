@@ -261,6 +261,7 @@
     font-size: 14px;
     margin-right: 1%;
     color:#C4C4C4;
+    max-width: 8vw;
 }
 
 .comment_content, .comment_user, .comment_time, .reviews {
