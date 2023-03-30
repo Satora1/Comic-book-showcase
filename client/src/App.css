@@ -395,7 +395,7 @@ button {
   margin-bottom: 1vh;
 }
 
-.back_arrow{
+.back_arrow {
   position: relative;
   right: 12vw;
   top: 6.3vh;
@@ -446,16 +446,16 @@ button {
 .profile a,
 .Home a,
 .Comics a,
-.log_manage a
-{
-   text-decoration: none;
-   color: #fff;
+.log_manage a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .Home,
 .Comics,
 .log_manage,
 .profile {
+  text-align: center;
   width: 100px;
   height: 20px;
   color: #fff;
@@ -481,13 +481,13 @@ button {
 .Home:active,
 .Comics:active,
 .log_manage:active,
-.profile:active  {
+.profile:active {
   transform: scale(1.3);
   background-color: rgb(182, 182, 42);
   color: #fff;
   border-radius: 25px;
-  cursor: not-allowed ;
-   opacity: 1
+  cursor: not-allowed;
+  opacity: 1
 }
 
 
@@ -496,10 +496,9 @@ button {
 .profile a,
 .Home a,
 .Comics a,
-.log_manage a
-{
-   text-decoration: none;
-   color: #fff;
+.log_manage a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .Home,
@@ -531,13 +530,13 @@ button {
 .Home:active,
 .Comics:active,
 .log_manage:active,
-.profile:active  {
+.profile:active {
   transform: scale(1.3);
   background-color: rgb(182, 182, 42);
   color: #fff;
   border-radius: 25px;
-  cursor: not-allowed ;
-   opacity: 1
+  cursor: not-allowed;
+  opacity: 1
 }
 
 
