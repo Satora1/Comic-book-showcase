@@ -2,11 +2,16 @@ import Premium from "./premium";
 
 function ProfilePanel(props) {
     const nick = props.loggedIn[1].nick
-    return (<div className="profile_panel">
-        <div>Hello, {nick}!</div> 
-        <h1>To Use Links Download ADblocker</h1> <Premium/>
-        <button onClick={() => props.deleteAccount(nick)}>DELETE ACCOUNT</button>
-      
+    return (
+    <div>
+    <div className="profile_panel">
+        <div className="profile">Hello, {nick}!</div> 
+
+
+        <button className="profile" onClick={() => props.deleteAccount(nick)}>DELETE ACCOUNT</button>
+     
+    </div>
+     <Premium/>
     </div>)
 }
 export default ProfilePanel

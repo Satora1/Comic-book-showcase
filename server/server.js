@@ -19,8 +19,8 @@ app.get('/heroes', async (req, res) => {
   let offset = 0
   const heroes = []
   while (offset < 1200) {
-    let url = 'https://gateway.marvel.com/v1/public/characters?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&&' +
-      'offset=' + offset + '&limit=100'
+    let url = 'https://gateway.marvel.com/v1/public/characters?apikey=72819049b7a70c5a7560906f11e0a0df&hash=28f894fadc80d9f867e83d5ffc4e7f0c&ts=1680007036&&' +
+    'offset=' + offset + '&limit=100'
     const response = await fetch(url);
     const data = await response.json();
     data.data.results.map(el => heroes.push(el))
@@ -30,7 +30,7 @@ app.get('/heroes', async (req, res) => {
 })
 
 app.get('/comics', async (req, res) => {
-  const response = await fetch('https://gateway.marvel.com/v1/public/comics?apikey=1c4a632e0b889700b428b83563a3f86c&hash=6adf6ccdedcc9751f401b467a0b9bbfd&ts=1678713362&orderBy=modified&limit=100');
+  const response = await fetch('https://gateway.marvel.com/v1/public/comics?apikey=72819049b7a70c5a7560906f11e0a0df&hash=28f894fadc80d9f867e83d5ffc4e7f0c&ts=1680007036&orderBy=modified&limit=100');
   const data = await response.json();
   res.json(data.data.results)
 })
