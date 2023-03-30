@@ -5,7 +5,7 @@ body {
   overflow-y: scroll;
 
 
-  
+
 }
 
 .App {
@@ -204,13 +204,14 @@ button {
 
 .profile_panel {
   position: absolute;
-  top: 50vh;
+  overflow: auto;
+  top: 25vh;
   left: 35vw;
   text-align: center;
   background-color: white;
   border-radius: 20px;
   width: 30vw;
-  height: 20vh;
+  height: 50vh;
 }
 
 .profile {
@@ -221,11 +222,39 @@ button {
 .change-password-form {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 2vw;
+}
+
+#confirm_password {
+  position: relative;
+  left: 38px;
+  padding-bottom: 15px;
+}
+
+#new_password {
+  position: relative;
+  left: 61px;
+}
+
+#current_password {
+  position: relative;
+  left: 40px;
 }
 
 .incorrect {
- border: red 1px solid  
+  border: red 3px solid
 }
+
+#error_message {
+  padding-top: 5vh;
+}
+
+#hello {
+  padding-top: 5vh;
+}
+
 .error-message {
   background-color: grey;
   border-radius: 20px;
@@ -243,6 +272,33 @@ button {
 
 .comment_container {
   padding: 20px;
+}
+
+.user_comment_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: grey 1px solid;
+}
+
+#user_comment_stars {
+  max-width: 8vw;
+  padding: 1vw;
+  top: 3vh;
+  position: relative;
+}
+
+.comment_title {
+  font-size: medium;
+  max-width: 12vw;
+  padding: 1vw;
+}
+
+.comment_time {
+  max-width: 8vw;
+  padding: 1vw;
+  position: relative;
+  top: 2vh;
 }
 
 .comment_user {
@@ -266,6 +322,7 @@ button {
   float: left;
 }
 
+
 .email_label {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
@@ -288,11 +345,13 @@ button {
 
 .email_input,
 .password_input,
-.nick_input {
+.nick_input,
+#confirm_password,
+#new_password,
+#current_password {
   flex: 1;
   padding: 8px;
   border-radius: 5px;
-  border: none;
   font-size: 16px;
   margin-bottom: 20px;
   background-color: rgb(62, 80, 214);
@@ -308,7 +367,12 @@ button {
 
 .login_button,
 .registration_button,
-.cancel {
+.cancel,
+#confirm_password_change,
+#change_password,
+#delete_account,
+#account_settings,
+#view_reviews {
   display: inline-block;
   padding: 10px 20px;
   font-size: 18px;
@@ -320,7 +384,28 @@ button {
   margin-right: 20px;
 }
 
-.login_button {
+#change_password,
+#account_settings,
+#view_reviews,
+#delete_account {
+  position: relative;
+  background-color: rgb(62, 80, 214);
+  color: white;
+  left: 15px;
+}
+
+#account_settings_title,
+#your_reviews {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 2px;
+}
+
+.login_button,
+#confirm_password_change {
   background-color: green;
   color: white;
 }
@@ -328,6 +413,13 @@ button {
 .registration_button {
   background-color: blue;
   color: white;
+}
+
+#confirm_password_change,
+#cancel_password_change {
+  position: relative;
+  bottom: 50px;
+  left: 45px
 }
 
 .cancel {
@@ -341,7 +433,14 @@ button {
   color: grey
 }
 
-.films{
+.user_comment_content {
+  text-align: left;
+  color: grey;
+  position: relative;
+  left: 1vw;
+}
+
+.films {
   border-radius: 30px;
   position: fixed;
   top: 50%;
@@ -350,7 +449,7 @@ button {
   width: 500px;
   height: 60vh;
   background: #ED1E23;
- 
+
 }
 
 .WBZ {
@@ -358,7 +457,7 @@ button {
   margin-top: auto;
   width: 100px;
   height: 200px;
-  margin-left: 30vh; 
+  margin-left: 30vh;
   margin-bottom: 10vh;
   background-image: url("./components/IMG/WBZ.jpg");
   background-size: cover;
@@ -367,7 +466,7 @@ button {
 
 .CM {
   display: inline-block;
-  margin-top:auto;
+  margin-top: auto;
   width: 100px;
   height: 200px;
   background-image: url("./components/IMG/CM.jpg");

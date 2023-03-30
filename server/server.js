@@ -37,12 +37,12 @@ app.get('/comics', async (req, res) => {
 
 app.post('/comments', async (req, res) => {
   const user = req.body.user
-  const comicId = req.body.id
+  const title = req.body.title
   const commentContent = req.body.commentContent
   const stars = req.body.stars
   const comment = new Comment({
     user,
-    comicId,
+    title,
     commentContent,
     stars,
     date: Date.now()

@@ -18,7 +18,6 @@ class Premium extends React.Component {
            Use AD blocker
            </div>
             <button className='CM' onClick={this.handleClickCM}></button>
-         
             <button className='WBZ' onClick={this.handleClickWBG}></button>
           </div>
         </div>
