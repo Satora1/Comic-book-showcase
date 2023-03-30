@@ -11,7 +11,7 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comics
     const getComments = async () => {
         const response = await fetch('http://localhost:5000/comments');
         const data = await response.json();
-        setChosenComicComments(data.filter(comment => comment.comicId === chosenComic.id))
+        setChosenComicComments(data.filter(comment => comment.title === chosenComic.title))
     }
 
     useEffect(() => {
@@ -22,10 +22,10 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comics
     async function AddComment(e, getComments) {
         e.preventDefault()
         const user = loggedIn[1].nick
-        const id = chosenComic.id
+        const title = chosenComic.title
         const response = async () => await axios.post("http://localhost:5000/comments", {
             user,
-            id,
+            title,
             commentContent,
             stars
         })

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     user: String,
-    comicId: Number,
+    title: String,
     commentContent: String,
     stars: String,
     date: Date,

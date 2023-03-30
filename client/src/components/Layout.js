@@ -6,12 +6,15 @@ import '../App.css';
 
 
 const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn }) => {
+   
+
+   
     return (
         <div className='toolbar'>
             <div className="buttons">
-                <div> <NavLink to='/'>HOME</NavLink>
+                <div className="Home" > <NavLink to='/' >HOME</NavLink>
                 </div>
-                <div> <NavLink to='/comics'>COMICS</NavLink>
+                <div className="Comics"> <NavLink to='/comics'>COMICS</NavLink>
                 </div>
                 <div className="cart-circle-nav-parent">
                     <div className="cart-circle-nav">{JSON.parse(localStorage.comicsInCart).length}</div> 
@@ -28,7 +31,7 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                         showRegistrationForm={showRegistrationForm}
                         loggedIn={loggedIn}
                         setLoggedIn={setLoggedIn} />}
-                {loggedIn && <NavLink to='/profile' className="profile">PROFILE</NavLink>}
+                {loggedIn && <NavLink to='/profile'><div className="profile">PROFILE</div></NavLink>}
                 {loggedIn && <NavLink to='/'><div className="log_manage" onClick={() => setLoggedIn(false)}>LOGOUT</div></NavLink>}
             </div>
 
