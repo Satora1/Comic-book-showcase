@@ -35,7 +35,7 @@ button {
   position: absolute;
   top: 3vh;
   left: 39vw;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero_search_container,
@@ -137,22 +137,28 @@ button {
 }
 
 .LogIn {
-  width: 500px;
+  width: 100px;
   height: 600px;
   position: absolute;
   top: 0px;
   right: 0px;
 }
 
+.log_manage {
+  width: 100px;
+  position: absolute;
+  right: 0px
+}
+
 .highlighted_click {
-  color: blue
+  color: blue;
+  cursor:pointer;
 }
 
 .comic-list {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  z-index: 1;
   top: 10vh;
   height: 90vh;
   overflow: auto;
