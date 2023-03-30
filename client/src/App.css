@@ -453,6 +453,19 @@ button {
   z-index: 1;
 }
 
+.logo-container {
+  width: 80px;
+  height: 20px;
+  position: absolute;
+  bottom: 190%;
+  right: 60%;
+}
+
+.marvel-logo {
+  width:auto; 
+  height: 9vw;
+}
+
 .cart-circle-nav {
   width: 1.2vw;
   line-height: 1.2vw;
