@@ -39,7 +39,10 @@ function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRe
                         return (
                             <div className="single-item" key={comic.id}>
                                 <img className="cart-comic-image" src={comic.thumbnail.path + ".jpg"} alt="comic front page" />
-                                <div className="cart-comic-title">{comic.title}</div>
+                                <div className="cart-comic-title">
+                                    <div className="cart-comic-title">{comic.title}</div>
+                                    <div className="cart-comic-quantity">{comicsInCart.filter(id => id === comic.id).length}x copies</div>
+                                </div>
                                 <div className="cart-comic-price">${comic.prices[0].price}</div>
                             </div>
                         )

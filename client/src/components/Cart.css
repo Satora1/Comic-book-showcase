@@ -52,7 +52,7 @@
     width: 25vw;
 }
 
-.cart-comic-title, .cart-comic-price, .subtotal {
+.cart-comic-title, .cart-comic-price, .subtotal, .cart-comic-quantity {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
@@ -95,4 +95,10 @@
 .add-to-cart.cart-button {
     margin-top:0;
     font-size: 14px;
+}
+
+.cart-comic-quantity {
+    margin-top: 3%;
+    font-size: 14px;
+    font-weight: bold;
 }

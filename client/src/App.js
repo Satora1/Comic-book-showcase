@@ -19,9 +19,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [comicsInCart, setComicsInCart] = useState([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart));
-  // }, [comicsInCart]);
+  useEffect(() => {
+    localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart));
+  }, [comicsInCart, comics]);
 
   useEffect(() => {
     const comics = JSON.parse(localStorage.getItem('comicsInCart'));
