@@ -2,7 +2,7 @@ import HeroSearchbar from "./HeroSearchbar"
 import Layout from "./Layout"
 
 function Homepage({ handleGlobalClick, showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn,
-    setLoggedIn, setHeroSearch, heroSearch, heroes, setShowHeroesRecommendations, showHeroesRecommendations }) {
+    setLoggedIn, setHeroSearch, heroSearch, heroes, setShowHeroesRecommendations, showHeroesRecommendations, comicsInCart }) {
     return (<div>
         <div onClick={(e) => handleGlobalClick(e)} className="App">
             <div className='background-img'>
@@ -12,7 +12,9 @@ function Homepage({ handleGlobalClick, showLoginForm, setShowLoginForm, showRegi
                     showRegistrationForm={showRegistrationForm}
                     setShowRegistrationForm={setShowRegistrationForm}
                     loggedIn={loggedIn}
-                    setLoggedIn={setLoggedIn} />
+                    setLoggedIn={setLoggedIn}
+                    comicsInCart={comicsInCart}
+                    />
                 <HeroSearchbar
                     handleGlobalClick={handleGlobalClick}
                     setHeroSearch={setHeroSearch}

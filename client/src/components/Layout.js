@@ -5,7 +5,7 @@ import cartImage from "./IMG/cart-image-white-removebg.png"
 import '../App.css';
 
 
-const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn }) => {
+const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn, comicsInCart }) => {
    
 
    
