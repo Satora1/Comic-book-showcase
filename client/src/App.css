@@ -36,7 +36,7 @@ button {
 .hero_search_container,
 .comics_search_container {
   position: absolute;
-  top:2vh;
+  top: 2vh;
   background-color: white;
   border-top-left-radius: 20%;
   border-top-right-radius: 20%;
@@ -128,7 +128,7 @@ button {
   margin-inline: 150px;
   position: absolute;
   left: 0px;
-  top:13px;
+  top: 13px;
   justify-content: center;
 }
 
@@ -147,12 +147,12 @@ button {
 .log_manage {
   width: 100px;
   position: absolute;
-  right: 0px
+  right: 2vw
 }
 
 .highlighted_click {
   color: blue;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .comic-list {
@@ -183,13 +183,12 @@ button {
 }
 
 .account-sheet {
-  height: 300px;
+  height: 50vh;
   width: 35vw;
   overflow: auto;
-
   border-radius: 25px;
   border: 2px solid black;
-  box-shadow:  16px 16px 16px 16px black;
+  box-shadow: 16px 16px 16px 16px black;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -202,8 +201,34 @@ button {
 .profile_panel {
   position: absolute;
   top: 50vh;
-  left: 45vw;
-  width: 10vw
+  left: 35vw;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  width: 30vw;
+  height: 20vh;
+}
+
+.profile {
+  position: absolute;
+  right: 10vw;
+}
+
+.change-password-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.incorrect {
+ border: red 1px solid  
+}
+.error-message {
+  background-color: grey;
+  border-radius: 20px;
+  text-align: center;
+  border-width: 2px;
+  width: 20vw;
+  margin-left: 7.5vw;
 }
 
 .stars {
@@ -233,7 +258,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 8px;
-  margin-right: -300px; 
+  margin-right: -300px;
   float: left;
 }
 
@@ -311,4 +336,3 @@ button {
   text-align: left;
   color: grey
 }
-
