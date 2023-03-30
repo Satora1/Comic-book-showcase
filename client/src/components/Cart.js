@@ -16,7 +16,7 @@ function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRe
     }, [comics])
 
     useEffect(() => {
-        comics && setCartSubTotal(comics.filter(comic => comicsInCart.includes(comic.id)).map(comic => comic.prices[0].price).reduce((acc, cur) => acc + cur, 0).toFixed(2));
+        comics && setCartSubTotal(comics.filter(comic => comicsInCart.includes(comic.id)).map(comic => (comicsInCart.filter(id => id === comic.id).length)*comic.prices[0].price).reduce((acc, cur) => acc + cur, 0).toFixed(2));
     }, [comics, comicsInCart])
 
     return (
