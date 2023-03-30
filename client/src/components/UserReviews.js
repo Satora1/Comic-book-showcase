@@ -20,7 +20,7 @@ function UserReviews({ nick, goBack }) {
             <div key={comment.id} className="user_comment_container">
                 <div className="comment_top">
                     <div className="comment_title">{comment.title} </div>
-                    <div className="comment_time"> {comment.date ? comment.date.slice(0, 10) : ""} {comment.date ? comment.date.slice(11, 19) : ""} </div>
+                    <div className="user_comment_time"> {comment.date ? comment.date.slice(0, 10) : ""} {comment.date ? comment.date.slice(11, 19) : ""} </div>
                     <div id="user_comment_stars">{[1, 2, 3, 4, 5].map(el => (
                         el > comment.stars ? (<div id={el}
                             key={el}

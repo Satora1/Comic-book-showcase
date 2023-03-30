@@ -94,7 +94,6 @@ const Login = (props) => {
                     nick,
                     password
                 });
-                //TODO refactor res.json to object/ switch
                 if (response.data === "user created") {
                     console.log("Created an account!");
                     setEmail("")
@@ -113,8 +112,6 @@ const Login = (props) => {
             } catch (error) {
                 console.log(error);
             }
-            setNick("");
-            setPassword("");
         }
     }
 

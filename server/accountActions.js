@@ -25,23 +25,27 @@ class LogActions {
   }
 
   async login(req, res) {
-    try {
-      const { nick, password } = req.body;
-      const user = await LOGIN.findOne({ nick });
-      if (!user) {
-        res.json("user not found");
-        return;
-      }
-      const isMatch = bcrypt.compare(password, user.password);
-      if (isMatch) {
-        res.json(["user found", user]);
-      } else {
-        res.json("user not found");
-      }
-    } catch (error) {
-      console.error(error);
-      res.json("an error occurred");
+    console.log(req.body)
+    const { nick, password } = req.body;
+    console.log(nick, password)
+    const user = await LOGIN.findOne({ nick });
+    if (!user) {
+      res.json("user not found");
+      return;
     }
+    console.log(password, user.password)
+    bcrypt.compare(password, user.password, (err, result) => {
+      console.log(result)
+      if (result) {
+        res.send(["user found", user])
+      }
+      if (!result) {
+        res.send("user not found")
+      }
+      if (err) {
+        res.send("An error has occured, please try again")
+      }
+    });
   }
 
 
@@ -73,7 +77,7 @@ class LogActions {
       if (!result) {
         res.send("Password incorrect")
       }
-      if(err){
+      if (err) {
         res.send("An error has occured, please try again")
       }
     });
