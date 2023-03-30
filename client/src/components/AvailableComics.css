@@ -271,3 +271,10 @@
     font-size: 24px;
     margin-top: 8%;
 }
+
+.popuptext {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 1%;
+}

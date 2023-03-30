@@ -3,7 +3,8 @@ import ComicsSearchbar from "./ComicsSearchbar"
 import Layout from './Layout'
 
 function ComicsPage({ setComicsSearch, comicsSearch, comics, loggedIn, setShowComicsRecommendations,
-    showComicsRecommendations, setShowLoginForm, setShowRegistrationForm, handleGlobalClick, showLoginForm, setLoggedIn, showRegistrationForm }) {
+    showComicsRecommendations, setShowLoginForm, setShowRegistrationForm, handleGlobalClick, showLoginForm, setLoggedIn, showRegistrationForm, 
+    comicsInCart, setComicsInCart}) {
 
     return (
         <div>
@@ -24,14 +25,20 @@ function ComicsPage({ setComicsSearch, comicsSearch, comics, loggedIn, setShowCo
                         loggedIn={loggedIn}
                         setShowComicsRecommendations={setShowComicsRecommendations}
                         showComicsRecommendations={showComicsRecommendations}
-                        setShowLoginForm={setShowLoginForm} />
+                        setShowLoginForm={setShowLoginForm}
+                        comicsInCart={comicsInCart}
+                        setComicsInCart={setComicsInCart} 
+                        />
                     <AvailableComics setComicsSearch={setComicsSearch}
                         comicsSearch={comicsSearch}
                         comics={comics}
                         loggedIn={loggedIn}
                         setShowComicsRecommendations={setShowComicsRecommendations}
                         showComicsRecommendations={showComicsRecommendations}
-                        setShowLoginForm={setShowLoginForm} />
+                        setShowLoginForm={setShowLoginForm}
+                        comicsInCart={comicsInCart}
+                        setComicsInCart={setComicsInCart}
+                        />
                 </div>
             </div>
         </div>)
