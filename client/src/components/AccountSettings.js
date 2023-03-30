@@ -1,11 +1,10 @@
 import { useState } from "react"
 import axios from "axios"
 import { NavLink } from "react-router-dom"
-function AccountSettings({ hashedPassword, deleteAccount, nick }) {
+function AccountSettings({ goBack, hashedPassword, deleteAccount, nick, changePasswordForm, setChangePasswordForm }) {
     const [currentPasswordCorrect, setCurrentPasswordCorrect] = useState("correct")
     const [newPasswordCorrect, setNewPasswordCorrect] = useState("correct")
     const [confirmPasswordCorrect, setConfirmPasswordCorrect] = useState("correct")
-    const [changePasswordForm, setChangePasswordForm] = useState(false)
     const [newPassword, setNewPassword] = useState("")
     const [confirmNewPassword, setConfirmNewPassword] = useState("")
     const [currentPassword, setCurrentPassword] = useState("")
@@ -81,8 +80,10 @@ function AccountSettings({ hashedPassword, deleteAccount, nick }) {
     }
 
     return (<div>
-        <div id="account_settings_title">Account Settings</div>
+        <div className="back_arrow" onClick={() => {goBack(); setErrorMessage("")}}>&#8249;</div>
+        {!changePasswordForm && <div id="account_settings_title">Account Settings</div>}
         {!changePasswordForm && <button id="change_password" onClick={() => setChangePasswordForm(true)}>Change Password</button>}
+        {changePasswordForm && <div id="change_password_title">Change Password</div>}
         {changePasswordForm && <form className="change-password-form" onSubmit={(e) => handleChangePasswordSubmit(e)}>
             <div>
                 <label>Current Password</label>
@@ -96,13 +97,14 @@ function AccountSettings({ hashedPassword, deleteAccount, nick }) {
                 <label>Confirm Password</label>
                 <input type="password" id="confirm_password" className={confirmPasswordCorrect} onChange={(e) => setConfirmNewPassword(e.target.value)}></input>
             </div>
+            <div id="error_message">{errorMessage}</div>
             <div>
-                <input type="submit" id="confirm_password_change" value="Confirm"></input><button id="cancel_password_change" className="cancel" onClick={() => setChangePasswordForm(false)}>Cancel</button>
+                <input type="submit" id="confirm_password_change" value="Confirm"></input><button id="cancel_password_change" className="cancel" onClick={() => {setChangePasswordForm(false); setErrorMessage("")}}>Cancel</button>
             </div>
         </form>
         }
         {!changePasswordForm && <NavLink to='/'><button id="delete_account" onClick={() => deleteAccount(nick)}>DELETE ACCOUNT</button></NavLink>}
-        <div id="error_message">{errorMessage}</div>
+        {!changePasswordForm && <div>{errorMessage}</div>}
     </div>
     )
 }

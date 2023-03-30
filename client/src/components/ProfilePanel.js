@@ -2,14 +2,22 @@ import Layout from "./Layout";
 import { useState } from "react";
 import AccountActions from "./AccountSettings";
 import UserReviews from "./UserReviews";
+import AccountSettings from "./AccountSettings";
 
 
 function ProfilePanel(props) {
     const [accountActions, setAccountActions] = useState(false)
     const [viewReviews, setViewReviews] = useState(false)
+    const [changePasswordForm, setChangePasswordForm] = useState(false)
 
     const nick = props.loggedIn[1].nick
     const hashedPassword = props.loggedIn[1].password
+
+    function goBack() {
+        changePasswordForm ? setChangePasswordForm(false) :
+            accountActions ? setAccountActions(false) :
+                viewReviews ? setViewReviews(false) : console.log(".")
+    }
 
     return (
         <div className='background-img'>
@@ -25,8 +33,8 @@ function ProfilePanel(props) {
                 {(!accountActions && !viewReviews) && <div id="hello">Hello, {nick}!</div>}
                 {(!accountActions && !viewReviews) && <button id="account_settings" onClick={() => setAccountActions(true)}>Account Settings</button>}
                 {(!accountActions && !viewReviews) && <button id="view_reviews" onClick={() => setViewReviews(true)}>Your Reviews</button>}
-                {accountActions && <AccountActions hashedPassword={hashedPassword} deleteAccount={props.deleteAccount} nick={nick} />}
-                {viewReviews && <UserReviews nick={nick} />}
+                {accountActions && <AccountSettings changePasswordForm={changePasswordForm} setChangePasswordForm={setChangePasswordForm} goBack={goBack} hashedPassword={hashedPassword} deleteAccount={props.deleteAccount} nick={nick} />}
+                {viewReviews && <UserReviews goBack={goBack} nick={nick} />}
             </div>
 
         </div>)

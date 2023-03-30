@@ -211,7 +211,7 @@ button {
   background-color: white;
   border-radius: 20px;
   width: 30vw;
-  height: 50vh;
+  height: 55vh;
 }
 
 .profile {
@@ -248,7 +248,7 @@ button {
 }
 
 #error_message {
-  padding-top: 5vh;
+  padding-left: 8vw;
 }
 
 #hello {
@@ -392,10 +392,19 @@ button {
   background-color: rgb(62, 80, 214);
   color: white;
   left: 15px;
+  margin-bottom: 1vh;
+}
+
+.back_arrow{
+  position: relative;
+  right: 12vw;
+  top: 6.3vh;
+  font-size: 40px;
 }
 
 #account_settings_title,
-#your_reviews {
+#your_reviews,
+#change_password_title {
   display: inline-block;
   padding: 10px 20px;
   font-size: 18px;

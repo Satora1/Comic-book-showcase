@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function UserReviews({ nick }) {
+function UserReviews({ nick, goBack }) {
     const [userComments, setUserComments] = useState("")
     const getComments = async () => {
         const response = await fetch('http://localhost:5000/comments');
@@ -13,6 +13,7 @@ function UserReviews({ nick }) {
 
 
     return (<div>
+        <div className="back_arrow" onClick={() => goBack()}>&#8249;</div>
         <div id="your_reviews">Your Reviews</div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         {[...userComments].map(comment => (
