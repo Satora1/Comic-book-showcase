@@ -442,7 +442,35 @@ button {
   color: grey
 }
 
+.cart-image-nav {
+  width:3vw; 
+  height: 6vh;
+  position: absolute;
+  right: 50%;
+  bottom:-100%;
+  z-index: 1;
+}
 
+.cart-circle-nav {
+  width: 1.2vw;
+  line-height: 1.2vw;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  background-color:#222222;
+  z-index: 2;
+}
+
+.cart-circle-nav-parent {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  position:relative;
+}
+  
 .profile a,
 .Home a,
 .Comics a,
