@@ -17,7 +17,7 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                 <div className="Comics"> <NavLink to='/comics'>COMICS</NavLink>
                 </div>
                 <div className="cart-circle-nav-parent">
-                    <div className="cart-circle-nav">{JSON.parse(localStorage.comicsInCart).length}</div> 
+                    <div className="cart-circle-nav">{localStorage.comicsInCart?JSON.parse(localStorage.comicsInCart).length:0}</div> 
                     <NavLink to='/cart'><img className="cart-image-nav" src={cartImage} /></NavLink>
                 </div>
             </div>

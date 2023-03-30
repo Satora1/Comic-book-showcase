@@ -29,12 +29,14 @@ button {
   position: absolute;
   top: 50vh;
   left: 39vw;
+  margin-left: 30vh;
 }
 
 .comics_search_container {
   position: absolute;
   top: 3vh;
   left: 39vw;
+  margin-left: 30vh;
 }
 
 .hero_search_container,
