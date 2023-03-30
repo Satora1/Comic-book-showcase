@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
+import cartImage from "./IMG/cart-image-white-removebg.png"
+import '../App.css';
+
 
 const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn }) => {
    
@@ -13,7 +16,9 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                 </div>
                 <div className="Comics"> <NavLink to='/comics'>COMICS</NavLink>
                 </div>
-                <div> <NavLink to='/cart'>CART</NavLink>
+                <div className="cart-circle-nav-parent">
+                    <div className="cart-circle-nav">{JSON.parse(localStorage.comicsInCart).length}</div> 
+                    <NavLink to='/cart'><img className="cart-image-nav" src={cartImage} /></NavLink>
                 </div>
             </div>
             <div className='LogIn'>
