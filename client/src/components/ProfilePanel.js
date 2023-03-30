@@ -1,4 +1,3 @@
-import Premium from "./premium";
 import Layout from "./Layout";
 import { NavLink } from "react-router-dom";
 function ProfilePanel(props) {
@@ -15,9 +14,9 @@ function ProfilePanel(props) {
             />
             <div className="profile_panel">
                 <div>Hello, {nick}!</div>
-                <h3>To Use Links Download ADblocker</h3> <Premium />
                 <NavLink to='/'><button onClick={() => props.deleteAccount(nick)}>DELETE ACCOUNT</button></NavLink>
             </div>
+
         </div>)
 }
 export default ProfilePanel
