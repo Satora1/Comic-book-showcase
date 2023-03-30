@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-//import bcrypt from "bcrypt";
-
 
 
 import Modal from "react-modal";
@@ -13,7 +11,6 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-
     const [modalIsOpen, setIsOpen] = useState(true);
 
     function closeModal() {
@@ -23,13 +20,13 @@ const Login = (props) => {
 
     const LogToAccount = async (event) => {
         event.preventDefault();
+        setErrorMessage("")
         try {
             const response = await axios.post("http://localhost:5000/api/login", {
                 nick,
                 password,
             });
             if (response.data[0] === "user found") {
-                console.log("Login successful!");
                 setNick("");
                 setPassword("");
                 setEmail("")
@@ -50,11 +47,12 @@ const Login = (props) => {
     const OpenRegistrationForm = async (event) => {
         setNick("");
         setPassword("");
+        setErrorMessage("")
         props.setShowLoginForm(false);
         props.setShowRegistrationForm(true);
     }
 
-    function passwordIsCorrect() {
+    function isPasswordCorrect() {
         const manageMessageDisplay = [, , ,]
         const specialSigns = /[!@#$%^&*]/;
         const errMessages = ["be at least 8 characters long", "contain a capital letter", "contain a number", "contain a special symbol"]
@@ -69,41 +67,33 @@ const Login = (props) => {
             }
         }
         if (errMessageToDisplay.length > 0) {
-            alert(`Password must: ${errMessageToDisplay.join(" & ")}`)
-            return false
+            setErrorMessage(`Password must: ${errMessageToDisplay.join(" & ")}`)
+            return (true)
         }
-        else { return true }
+        else { return false }
     }
 
-
-
-
-
-
     const createAccount = async (event) => {
+        setErrorMessage("")
         event.preventDefault();
-
-
-
-
-
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert("Please enter a valid email address")
+            setErrorMessage("Please enter a valid email address")
+            return;
         }
         else if (nick.length < 4) {
-            alert("Nick must be at least 4 characters long")
+            setErrorMessage("Nick must be at least 4 characters long")
+            return;
         }
-        else if (passwordIsCorrect()) {
-
+        else if (isPasswordCorrect()) {
+            return;
+        }
+        else {
             try {
-
-                //password=  bcrypt.hash(password,10)
                 const response = await axios.post("http://localhost:5000/api/register", {
                     email,
                     nick,
                     password
                 });
-                console.log(response.data)
                 //TODO refactor res.json to object/ switch
                 if (response.data === "user created") {
                     console.log("Created an account!");
@@ -123,6 +113,8 @@ const Login = (props) => {
             } catch (error) {
                 console.log(error);
             }
+            setNick("");
+            setPassword("");
         }
     }
 
@@ -158,11 +150,11 @@ const Login = (props) => {
                         <label className="password_label">Password:</label>
                         <input className="password_input" type="password" onChange={(e) => setPassword(e.target.value)} />
                         <br />
+                        <div className="error-message">{errorMessage}</div>
                         <input type="submit" value="LogIn" className="login_button">
                         </input>
                         <button className="cancel" onClick={(e) => props.setShowLoginForm(false)}>cancel</button>
                     </form>
-                    <div>{errorMessage}</div>
                 </div>
             }
             {props.showRegistrationForm &&
@@ -176,13 +168,15 @@ const Login = (props) => {
                         <input className="nick_input" onChange={(e) => setNick(e.target.value)} />
                         <br />
                         <label className="password_label">Password:</label>
-                        <input className="password_input" onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" className="password_input" onChange={(e) => setPassword(e.target.value)} />
                         <br />
-                        <input type="submit" value="Register" className="registration_button">
-                        </input>
-                        <button className="cancel" onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
+                        <div className="error-message">{errorMessage}</div>
+                        <div>
+                            <input type="submit" value="Register" className="registration_button">
+                            </input>
+                            <button className="cancel" onClick={(e) => props.setShowRegistrationForm(false)}>cancel </button>
+                        </div>
                     </form>
-                    <div>{errorMessage}</div>
                 </div>}
         </div>
     </Modal>)

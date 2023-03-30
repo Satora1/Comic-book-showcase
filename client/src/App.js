@@ -70,6 +70,7 @@ function App() {
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
           showRegistrationForm={showRegistrationForm}
+          setShowRegistrationForm={setShowRegistrationForm}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn} />} />
         <Route path="/comics" element={<ComicsPage

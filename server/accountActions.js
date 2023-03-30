@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt =require("bcrypt")
+const bcrypt = require("bcrypt")
 
 const schema = new mongoose.Schema({
   email: String,
@@ -11,7 +11,6 @@ const LOGIN = mongoose.model("ActionsLog", schema);
 
 class LogActions {
   async register(req, res) {
-    console.log(req.body);
     const { email, nick, password } = req.body;
     const sameNick = await LOGIN.findOne({ nick: req.body.nick });
     const sameEmail = await LOGIN.findOne({ email: req.body.email });
@@ -24,7 +23,7 @@ class LogActions {
       res.json("user created");
     }
   }
-  
+
   async login(req, res) {
     try {
       const { nick, password } = req.body;
@@ -44,20 +43,41 @@ class LogActions {
       res.json("an error occurred");
     }
   }
-  
-  
+
+
   async deleteAccount(req, res) {
-    console.log(req.body)
-      await LOGIN.deleteOne({ nick: req.body.nick })
-        .then(account => {
-          res.json(account);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
+    await LOGIN.deleteOne({ nick: req.body.nick })
+      .then(account => {
+        res.json(account);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
+  async changePassword(req, res) {
+    const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10);
+    await LOGIN.findOne({ password: req.body.hashedPassword })
+      .then(account => {
+        account.password = hashedNewPassword
+        account.save()
+        res.send("Password Changed")
+      })
+  }
 
+  async comparePasswords(req, res) {
+    bcrypt.compare(req.body.currentPassword, req.body.hashedPassword, (err, result) => {
+      if (result) {
+        res.send("Password correct")
+      }
+      if (!result) {
+        res.send("Password incorrect")
+      }
+      if(err){
+        res.send("An error has occured, please try again")
+      }
+    });
+  }
 }
 
 
