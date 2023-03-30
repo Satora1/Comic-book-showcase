@@ -13,7 +13,6 @@ const Layout = ({
     const [cartIcon, setCartIcon] = useState(0)
 
     useEffect(() => {
-        console.log(comicsInCart)
         const comicsAmount = [...comicsInCart]
         setCartIcon(comicsAmount ? comicsAmount.length : 0)
     }, [comicsInCart])
