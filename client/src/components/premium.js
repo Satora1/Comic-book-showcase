@@ -12,9 +12,14 @@ class Premium extends React.Component {
       return (
         <div>
             TESTED
-          <div className="films">
-            <button onClick={this.handleClickCM}>Capitan Marvel</button>
-            <button onClick={this.handleClickWBG}>Wojna Bez Granic</button>
+          <div className="films">  
+           <div><h1>Premium Films</h1>
+           <br/>
+           Use AD blocker
+           </div>
+            <button className='CM' onClick={this.handleClickCM}></button>
+         
+            <button className='WBZ' onClick={this.handleClickWBG}></button>
           </div>
         </div>
       );
