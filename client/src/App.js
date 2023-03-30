@@ -1,7 +1,7 @@
 import './App.css';
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import ProfilePanel from './components/ProfilePanel'
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ComicsPage from './components/ComicsPage';
 import Homepage from './components/Homepage';
 import Cart from "./components/Cart.js"
@@ -18,18 +18,6 @@ function App() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [comicsInCart, setComicsInCart] = useState([]);
-
-  // to niepotrzebne???
-  // useEffect(() => {
-  //   localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart));
-  // }, [comicsInCart, comics]);
-
-  useEffect(() => {
-    const comics = JSON.parse(localStorage.getItem('comicsInCart'));
-    if (comics) {
-      setComicsInCart(comics);
-    }
-  }, []);
 
   function handleGlobalClick(e) {
     if (e.target.className !== "hero_search") {
@@ -87,7 +75,7 @@ function App() {
           setLoggedIn={setLoggedIn}
           comicsInCart={comicsInCart}
           setComicsInCart={setComicsInCart}
-          />} />
+        />} />
         <Route path="/comics" element={<ComicsPage
           handleGlobalClick={handleGlobalClick}
           setComicsSearch={setComicsSearch}
@@ -103,8 +91,8 @@ function App() {
           setShowLoginForm={setShowLoginForm}
           comicsInCart={comicsInCart}
           setComicsInCart={setComicsInCart}
-          />}
-          />
+        />}
+        />
         <Route path="/profile" element={<ProfilePanel
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
@@ -113,12 +101,12 @@ function App() {
           setShowLoginForm={setShowLoginForm}
           showRegistrationForm={showRegistrationForm}
           setShowRegistrationForm={setShowRegistrationForm}
+          comicsInCart={comicsInCart} 
         />} />
-        <Route 
-          path="/cart" 
+        <Route
+          path="/cart"
           element={
-            <Cart 
-              comics={comics}
+            <Cart
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
               deleteAccount={deleteAccount}
@@ -127,11 +115,12 @@ function App() {
               showRegistrationForm={showRegistrationForm}
               setShowRegistrationForm={setShowRegistrationForm}
               comicsInCart={comicsInCart}
-            />            
-          } 
-        
-        
-        
+              setComicsInCart={setComicsInCart}
+            />
+          }
+
+
+
         />
       </Routes>
     </BrowserRouter>

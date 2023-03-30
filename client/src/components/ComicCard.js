@@ -1,13 +1,14 @@
-import { useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
+import { NavLink } from "react-router-dom"
 
 
-function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comicsInCart, setComicsInCart}) {
+function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comicsInCart, setComicsInCart }) {
     const [commentContent, setCommentContent] = useState("")
     const [stars, setStars] = useState(0)
     const [chosenComicComments, setChosenComicComments] = useState([])
     const [popUp, setPopUp] = useState(false);
-    
+
     const getComments = async () => {
         const response = await fetch('http://localhost:5000/comments');
         const data = await response.json();
@@ -39,10 +40,8 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comics
             .catch(error => console.error(error))
     }
 
-    async function addToCart(comicId) {
-        await setComicsInCart([...comicsInCart, comicId]);
-        console.log(comicsInCart);
-        localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart))
+    async function addToCart(comic) {
+        await setComicsInCart([...comicsInCart, comic]);
         setPopUp(true);
         setTimeout(() => {
             setPopUp(false);
@@ -73,9 +72,18 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comics
                         <div className="comic-price">Price: ${chosenComic.prices[0].price}</div>
                         <div className="in-stock">Availability: in stock</div>
                         <div className="comic-display-cart-buttons">
-                            <button type="button" className="add-to-cart" onClick={() => addToCart(chosenComic.id)}>Add to cart</button>
+                            <button type="button"
+                                className="add-to-cart"
+                                onClick={() => addToCart(chosenComic)}>
+                                Add to cart</button>
                             {popUp && <div className="popuptext" id="myPopup">Added to cart!</div>}
-                            <button type="button" className="buy-now" onClick={() => console.log("Sold!")}>Buy now</button>
+
+                            <NavLink to='/cart'>
+                                <button type="button"
+                                    className="buy-now"
+                                    onClick={() => addToCart(chosenComic)}>
+                                    Buy now</button>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="add-stars">

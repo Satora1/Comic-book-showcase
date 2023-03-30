@@ -14,7 +14,7 @@ function Homepage({ handleGlobalClick, showLoginForm, setShowLoginForm, showRegi
                     loggedIn={loggedIn}
                     setLoggedIn={setLoggedIn}
                     comicsInCart={comicsInCart}
-                    />
+                />
                 <HeroSearchbar
                     handleGlobalClick={handleGlobalClick}
                     setHeroSearch={setHeroSearch}

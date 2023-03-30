@@ -3,14 +3,15 @@ import ComicsSearchbar from "./ComicsSearchbar"
 import Layout from './Layout'
 
 function ComicsPage({ setComicsSearch, comicsSearch, comics, loggedIn, setShowComicsRecommendations,
-    showComicsRecommendations, setShowLoginForm, setShowRegistrationForm, handleGlobalClick, showLoginForm, setLoggedIn, showRegistrationForm, 
-    comicsInCart, setComicsInCart}) {
+    showComicsRecommendations, setShowLoginForm, setShowRegistrationForm, handleGlobalClick, showLoginForm, setLoggedIn, showRegistrationForm,
+    comicsInCart, setComicsInCart }) {
 
     return (
         <div>
             <div className='background-img'>
                 <div onClick={(e) => handleGlobalClick(e)} className="App">
                     <Layout
+                        comicsInCart={comicsInCart}
                         showLoginForm={showLoginForm}
                         setShowLoginForm={setShowLoginForm}
                         showRegistrationForm={showRegistrationForm}
@@ -27,8 +28,8 @@ function ComicsPage({ setComicsSearch, comicsSearch, comics, loggedIn, setShowCo
                         showComicsRecommendations={showComicsRecommendations}
                         setShowLoginForm={setShowLoginForm}
                         comicsInCart={comicsInCart}
-                        setComicsInCart={setComicsInCart} 
-                        />
+                        setComicsInCart={setComicsInCart}
+                    />
                     <AvailableComics setComicsSearch={setComicsSearch}
                         comicsSearch={comicsSearch}
                         comics={comics}
@@ -38,7 +39,7 @@ function ComicsPage({ setComicsSearch, comicsSearch, comics, loggedIn, setShowCo
                         setShowLoginForm={setShowLoginForm}
                         comicsInCart={comicsInCart}
                         setComicsInCart={setComicsInCart}
-                        />
+                    />
                 </div>
             </div>
         </div>)

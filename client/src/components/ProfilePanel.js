@@ -28,6 +28,7 @@ function ProfilePanel(props) {
                 setShowRegistrationForm={props.setShowRegistrationForm}
                 loggedIn={props.loggedIn}
                 setLoggedIn={props.setLoggedIn}
+                displayedComicLabels={props.displayedComicLabels} 
             />
             <div className="profile_panel">
                 {(!accountActions && !viewReviews) && <div id="hello">Hello, {nick}!</div>}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import cartImage from "./IMG/cart-image-white-removebg.png"
@@ -6,9 +6,17 @@ import marvel from "./IMG/marvel-logo.png"
 import '../App.css';
 
 
-const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn, comicsInCart }) => {
+const Layout = ({
+    showLoginForm, setShowLoginForm, showRegistrationForm,
+    setShowRegistrationForm, loggedIn, setLoggedIn, comicsInCart }) => {
 
+    const [cartIcon, setCartIcon] = useState(0)
 
+    useEffect(() => {
+        console.log(comicsInCart)
+        const comicsAmount = [...comicsInCart]
+        setCartIcon(comicsAmount ? comicsAmount.length : 0)
+    }, [comicsInCart])
 
     return (
         <div className='toolbar'>
@@ -18,7 +26,7 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                 <div className="Comics"> <NavLink to='/comics'>COMICS</NavLink>
                 </div>
                 <div className="cart-circle-nav-parent">
-                    <div className="cart-circle-nav">{localStorage.comicsInCart ? JSON.parse(localStorage.comicsInCart).length : 0}</div>
+                    <div className="cart-circle-nav">{cartIcon}</div>
                     <NavLink to='/cart'><img className="cart-image-nav" src={cartImage} alt="cart" /></NavLink>
                 </div>
             </div>

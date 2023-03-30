@@ -1,54 +1,57 @@
 import { useState, useEffect } from "react";
 import Layout from "./Layout";
+import ComicLabel from "./ComicLabel";
 import "./Cart.css";
 
 
 
-function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm, loggedIn, setLoggedIn,
-    comics, comicsInCart }) {
+function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRegistrationForm,
+    loggedIn, setLoggedIn, comicsInCart, setComicsInCart }) {
 
-    const [cartVisibility, setCartVisibility] = useState(false);
     const [cartSubTotal, setCartSubTotal] = useState(0);
-
+    const [displayedComicLabels, setDisplayedComicLabels] = useState([])
+    useEffect(() => {
+        const uniqueComics = [];
+        [...comicsInCart].map(comicIncart => {
+            if (!uniqueComics.includes(comicIncart)) {
+                uniqueComics.push(comicIncart)
+            }
+        })
+        setDisplayedComicLabels(uniqueComics)
+    }, [comicsInCart])
 
     useEffect(() => {
-        comics ? setCartVisibility(true) : setCartVisibility(false);
-    }, [comics])
+        setCartSubTotal([...comicsInCart]
+            .map(comic => comic.prices[0].price)
+            .reduce((acc, cur) => acc + cur, 0)
+            .toFixed(2))
+    }, [comicsInCart])
 
-    useEffect(() => {
-        comics && setCartSubTotal(comics.filter(comic => comicsInCart.includes(comic.id)).map(comic => (comicsInCart.filter(id => id === comic.id).length)*comic.prices[0].price).reduce((acc, cur) => acc + cur, 0).toFixed(2));
-    }, [comics, comicsInCart])
-
+    console.log(comicsInCart)
     return (
         <>
             <div className="cart-navbar">
                 <Layout
+                    comicsInCart={comicsInCart}
                     showLoginForm={showLoginForm}
                     setShowLoginForm={setShowLoginForm}
                     showRegistrationForm={showRegistrationForm}
                     setShowRegistrationForm={setShowRegistrationForm}
                     loggedIn={loggedIn}
-                    setLoggedIn={setLoggedIn} />
+                    setLoggedIn={setLoggedIn}
+                    displayedComicLabels={displayedComicLabels} />
             </div>
             <div className="cart-title-div">
                 <h3 className="cart-title">Cart</h3>
             </div>
             <div className="cart-list">
                 <div className="cart-elements">
-                    {cartVisibility ? comics.filter(comic => comicsInCart.includes(comic.id)).map(comic => {
-                        return (
-                            <div className="single-item" key={comic.id}>
-                                <img className="cart-comic-image" src={comic.thumbnail.path + ".jpg"} alt="comic front page" />
-                                <div className="cart-comic-title">
-                                    <div className="cart-comic-title">{comic.title}</div>
-                                    <div className="cart-comic-quantity">{comicsInCart.filter(id => id === comic.id).length}x copies</div>
-                                </div>
-                                <div className="cart-comic-price">${comic.prices[0].price}</div>
-                            </div>
-                        )
-                    })
-                        :
-                        <div className="cart-not-logged-in">Cart details still loading...</div>}
+                    {[...displayedComicLabels].map(comic => (
+                        <ComicLabel comic={comic}
+                            comicsInCart={comicsInCart}
+                            setComicsInCart={setComicsInCart}
+                        />
+                    ))}
                 </div>
                 <div className="cart-total">
                     <div className="subtotal">Subtotal: {cartSubTotal}$</div>
@@ -57,7 +60,7 @@ function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRe
                     </div>
                 </div>
             </div>
-            <div className="cart-not-logged-in">You are not logged in! You must register/login to add comics to your cart.</div>
+            <div className="cart-not-logged-in">You are not logged in! You must <a className="highlighted_click" onClick={() => setShowLoginForm(true)}> login </a>to purchase comics</div>
         </>
     )
 }
