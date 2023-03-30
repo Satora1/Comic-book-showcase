@@ -439,37 +439,3 @@ button {
   position: relative;
   left: 1vw;
 }
-
-.films {
-  border-radius: 30px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 60vh;
-  background: #ED1E23;
-
-}
-
-.WBZ {
-  display: inline-block;
-  margin-top: auto;
-  width: 100px;
-  height: 200px;
-  margin-left: 30vh;
-  margin-bottom: 10vh;
-  background-image: url("./components/IMG/WBZ.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.CM {
-  display: inline-block;
-  margin-top: auto;
-  width: 100px;
-  height: 200px;
-  background-image: url("./components/IMG/CM.jpg");
-  background-size: cover;
-  background-position: center;
-}

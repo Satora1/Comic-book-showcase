@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState} from "react"
 import axios from "axios"
 
 
-function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
+function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comicsInCart, setComicsInCart}) {
     const [commentContent, setCommentContent] = useState("")
     const [stars, setStars] = useState(0)
     const [chosenComicComments, setChosenComicComments] = useState([])
-
+    const [popUp, setPopUp] = useState(false);
+    
     const getComments = async () => {
         const response = await fetch('http://localhost:5000/comments');
         const data = await response.json();
@@ -38,6 +39,18 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
             .catch(error => console.error(error))
     }
 
+    async function addToCart(comicId) {
+        await setComicsInCart([...comicsInCart, comicId]);
+        localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart))
+        console.log("added to cart");
+        setPopUp(true);
+        setTimeout(() => {
+            setPopUp(false);
+        }, 3000)
+    }
+
+
+
     return (
         <>
             <div className="comic-card-container">
@@ -60,7 +73,8 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm }) {
                         <div className="comic-price">Price: ${chosenComic.prices[0].price}</div>
                         <div className="in-stock">Availability: in stock</div>
                         <div className="comic-display-cart-buttons">
-                            <button type="button" className="add-to-cart" onClick={() => console.log("Added to cart")}>Add to cart</button>
+                            <button type="button" className="add-to-cart" onClick={() => addToCart(chosenComic.id)}>Add to cart</button>
+                            {popUp && <div className="popuptext" id="myPopup">Added to cart!</div>}
                             <button type="button" className="buy-now" onClick={() => console.log("Sold!")}>Buy now</button>
                         </div>
                     </div>

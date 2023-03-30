@@ -51,7 +51,10 @@ function AvailableComics(props) {
                         zIndex={4}
                         loggedIn={props.loggedIn}
                         closeModal={closeModal}
-                        setShowLoginForm={props.setShowLoginForm} />}
+                        setShowLoginForm={props.setShowLoginForm}
+                        comicsInCart={props.comicsInCart}
+                        setComicsInCart={props.setComicsInCart}
+                        />}
             </Modal>
             <div className="comic-list">
                 {[...props.comics].map(el => (

@@ -63,7 +63,10 @@ function ComicsSearchbar(props) {
                     chosenComic={chosenComic}
                     loggedIn={props.loggedIn}
                     closeModal={closeModal}
-                    setShowLoginForm={props.setShowLoginForm} />}
+                    setShowLoginForm={props.setShowLoginForm}
+                    comicsInCart={props.comicsInCart}
+                    setComicsInCart={props.setComicsInCart}
+                    />}
             </Modal>
         </div>)
 }

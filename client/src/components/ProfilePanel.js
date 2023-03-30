@@ -1,4 +1,3 @@
-import Premium from "./premium";
 import Layout from "./Layout";
 import { useState } from "react";
 import AccountActions from "./AccountSettings";
@@ -29,6 +28,7 @@ function ProfilePanel(props) {
                 {accountActions && <AccountActions hashedPassword={hashedPassword} deleteAccount={props.deleteAccount} nick={nick} />}
                 {viewReviews && <UserReviews nick={nick} />}
             </div>
+
         </div>)
 }
 export default ProfilePanel
