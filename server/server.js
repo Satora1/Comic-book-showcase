@@ -45,7 +45,7 @@ app.post('/comments', async (req, res) => {
     title,
     commentContent,
     stars,
-    date: Date.now()
+    date: (new Date().getTime() + (2 * 3600000))
   })
   comment.save()
   res.send("comment added")
