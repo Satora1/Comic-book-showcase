@@ -42,8 +42,7 @@ function ComicCard({ chosenComic, loggedIn, closeModal, setShowLoginForm, comics
     async function addToCart(comicId) {
         await setComicsInCart([...comicsInCart, comicId]);
         console.log(comicsInCart);
-        // localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart))
-        // console.log("added to cart");
+        localStorage.setItem("comicsInCart", JSON.stringify(comicsInCart))
         setPopUp(true);
         setTimeout(() => {
             setPopUp(false);
