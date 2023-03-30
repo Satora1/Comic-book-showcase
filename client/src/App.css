@@ -296,12 +296,12 @@ button {
   padding: 1vw;
 }
 
-.comment_time {
+/* .comment_time {
   max-width: 8vw;
   padding: 1vw;
   position: relative;
   top: 2vh;
-}
+} */
 
 .comment_user {
   font-size: medium;
