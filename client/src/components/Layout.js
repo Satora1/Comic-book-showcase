@@ -13,6 +13,8 @@ const Layout = ({ showLoginForm, setShowLoginForm, showRegistrationForm, setShow
                 </div>
                 <div className="Comics"> <NavLink to='/comics'>COMICS</NavLink>
                 </div>
+                <div> <NavLink to='/cart'>CART</NavLink>
+                </div>
             </div>
             <div className='LogIn'>
                 {(!showLoginForm && !showRegistrationForm && !loggedIn) &&
