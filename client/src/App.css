@@ -446,10 +446,10 @@ button {
 
 .cart-image-nav {
   width:3vw; 
-  height: 6vh;
+  height: 7vh;
   position: absolute;
   right: 50%;
-  bottom:-100%;
+  bottom:-110%;
   z-index: 1;
 }
 
