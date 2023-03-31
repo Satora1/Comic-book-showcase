@@ -463,6 +463,9 @@ button {
 
 .marvel-logo {
   width:auto; 
+  position: fixed;
+  left: 40vw;
+  bottom: 87.5vh;
   height: 9vw;
 }
 

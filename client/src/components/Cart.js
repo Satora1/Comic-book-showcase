@@ -60,7 +60,9 @@ function Cart({ showLoginForm, setShowLoginForm, showRegistrationForm, setShowRe
                     </div>
                 </div>
             </div>
-            <div className="cart-not-logged-in">You are not logged in! You must <a className="highlighted_click" onClick={() => setShowLoginForm(true)}> login </a>to purchase comics</div>
+            {!loggedIn && <div className="cart-not-logged-in">
+                You are not logged in! You must
+                <a className="highlighted_click" onClick={() => setShowLoginForm(true)}> login </a>to purchase comics</div>}
         </>
     )
 }
